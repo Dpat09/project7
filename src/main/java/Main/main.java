@@ -1,12 +1,13 @@
 package Main;
 
+import Login.Login;
 import java.util.Scanner;
 
 public class main {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-
+        Login.launchLogin();
     }
     public static void splashScreen() {
 
