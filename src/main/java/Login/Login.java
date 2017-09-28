@@ -39,11 +39,12 @@ public class Login {
             case 2: //Launch SignUp
 
         }
-
-
+        //ArrayList<User> list = new ArrayList<User>();
+        //list.add(new User("test","123","test@test.com"));
+        User test = new User("test","123","test@test.com");
     }
 
-    public static void launchLogin(){
+    public static void launchLogin(ArrayList){
 
         System.out.println("\t\t========================\n" +
                            "\t\t        Sign In!        \n" +
@@ -51,10 +52,9 @@ public class Login {
     }
 
     public static void launchSignup(){
-
         System.out.println("\t\t========================\n" +
-                "\t\t        Sign Up!        \n" +
-                "\t\t========================\n\n");
+                           "\t\t        Sign Up!        \n" +
+                           "\t\t========================\n\n");
 
     }
 
