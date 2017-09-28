@@ -1,9 +1,12 @@
 package Login;
 
+import User.User;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Login {
-    public static void launchLogin(){
+    public static void launchLoginMenu(){
 
         int option = 0;
         while(true) {
@@ -12,6 +15,7 @@ public class Login {
                                "\t\t========================\n\n");
             //System.out.println("========================");
             System.out.print("Please select an option by entering 1 or 2: ");
+
             try{
                 Scanner input = new Scanner(System.in);
                 option = input.nextInt();
@@ -23,14 +27,35 @@ public class Login {
                 //Runtime.getRuntime().exec("clear");
                 System.out.println("Please enter a valid option");
             }
-            //switch(option){
-            //    case 1: //Launch Login
-            //    case 2: //Launch SignUp
-            //}
 
+        }
+
+        switch(option){
+
+            case 1: //Launch Login
+
+
+
+            case 2: //Launch SignUp
 
         }
 
 
     }
+
+    public static void launchLogin(){
+
+        System.out.println("\t\t========================\n" +
+                           "\t\t        Sign In!        \n" +
+                           "\t\t========================\n\n");
+    }
+
+    public static void launchSignup(){
+
+        System.out.println("\t\t========================\n" +
+                "\t\t        Sign Up!        \n" +
+                "\t\t========================\n\n");
+
+    }
+
 }
