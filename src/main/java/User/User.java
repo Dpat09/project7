@@ -1,9 +1,19 @@
 package User;
 
 public class User {
-   private String name;
-   private String password;
-   private String email;
+    private String name;
+    private String password;
+    private String email;
+
+    public User(){
+
+    }
+
+    public User(String name, String password, String email){
+        setName(name);
+        setPassword(password);
+        setEmail(email);
+    }
 
     public String getName() {
         return this.name;
@@ -25,7 +35,7 @@ public class User {
         return this.email;
     }
 
-    public void setEmail() {
+    public void setEmail(String email) {
         this.email = email;
     }
 }
