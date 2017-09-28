@@ -38,8 +38,6 @@ public class Login {
                     launchLogin(test);
                     break;
 
-
-
             case 2: //Launch SignUp
                     launchSignup();
 
@@ -66,8 +64,6 @@ public class Login {
                 System.out.println("Error inputting email");
             }
 
-            //System.out.println();
-
             try{
                 System.out.print("Password: ");
                 password = input.nextLine();
@@ -80,7 +76,7 @@ public class Login {
             if (success)
                 break;
             else
-                System.out.println("Invalid input, username or password is incorrect");
+                System.out.println("Invalid input, username or password is incorrect\n\n");
         }
 
 
