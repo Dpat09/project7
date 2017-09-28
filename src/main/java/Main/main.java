@@ -1,14 +1,16 @@
 package Main;
 
 import Login.Login;
-import Portfolio.Porfolio;
+import Portfolio.Portfolio;
+
 import java.util.Scanner;
 
 public class main {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-
+        Portfolio kingsley = new Portfolio();
+        kingsley.printPortfolio();
         Login.launchLoginMenu();
     }
     public static void splashScreen() {
