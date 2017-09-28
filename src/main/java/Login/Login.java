@@ -12,8 +12,10 @@ public class Login {
         while(true) {
             System.out.println("\t\t========================\n" +
                                "\t\t   WELCOME TO ACORNS!  \n" +
-                               "\t\t========================\n\n");
+                               "\t\t========================\n");
             //System.out.println("========================");
+
+            System.out.println("1. Login\n"+"2. Sign up\n");
             System.out.print("Please select an option by entering 1 or 2: ");
 
             try{
@@ -29,26 +31,60 @@ public class Login {
             }
 
         }
-
+        User test = new User("test","123","test@test.com");
         switch(option){
 
             case 1: //Launch Login
+                    launchLogin(test);
+                    break;
 
 
 
             case 2: //Launch SignUp
+                    launchSignup();
 
         }
         //ArrayList<User> list = new ArrayList<User>();
         //list.add(new User("test","123","test@test.com"));
-        User test = new User("test","123","test@test.com");
+
     }
 
-    public static void launchLogin(ArrayList){
+    public static void launchLogin(User test){
+        String email = "" , password = "";
+        Boolean success = false;
 
-        System.out.println("\t\t========================\n" +
-                           "\t\t        Sign In!        \n" +
-                           "\t\t========================\n\n");
+        while (true) {
+            System.out.println("\t\t========================\n" +
+                               "\t\t        Sign In!        \n" +
+                               "\t\t========================\n\n");
+
+            System.out.print("Email: ");
+            Scanner input = new Scanner(System.in);
+            try{
+                email = input.nextLine();
+            }catch (Exception e){
+                System.out.println("Error inputting email");
+            }
+
+            //System.out.println();
+
+            try{
+                System.out.print("Password: ");
+                password = input.nextLine();
+            }catch(Exception e){
+                System.out.println("Error inputting password");
+            }
+
+            success = test.getEmail().equals(email) && test.getPassword().equals(password);
+
+            if (success)
+                break;
+            else
+                System.out.println("Invalid input, username or password is incorrect");
+        }
+
+
+
     }
 
     public static void launchSignup(){
