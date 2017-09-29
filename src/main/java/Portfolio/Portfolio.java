@@ -1,5 +1,8 @@
 package Portfolio;
-import java.util.Scanner;
+
+import bottomOption.bottomOpt;
+
+
 
 
 public class Portfolio {
@@ -48,32 +51,11 @@ public class Portfolio {
         System.out.println("\n");
         System.out.println("\n");
 
-        System.out.println("1. Exit the Application \n"+"2. Return to Main\n");
 
-        nextRespond();
+        bottomOpt.nextRespond();
     }
 
-    public void nextRespond(){
 
-        int Nextoption = 0;
-
-        try{
-            Scanner respond = new Scanner(System.in);
-            Nextoption = respond.nextInt();
-
-            if(Nextoption == 0)
-
-
-
-        }catch(Exception e){
-
-            System.out.println("please enter a valid option");
-        }
-
-
-
-
-    }
 
 
 
