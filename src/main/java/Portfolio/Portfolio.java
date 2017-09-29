@@ -56,7 +56,9 @@ public class Portfolio {
             Nextoption = respond.nextInt();
 
 
-        }catch{
+
+
+        }catch(Exception e){
 
 
         }
