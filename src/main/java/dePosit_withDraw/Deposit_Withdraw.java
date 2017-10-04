@@ -61,7 +61,7 @@ public class Deposit_Withdraw {
         currentBalance = balance + DepositValue;
     }
 
-    public int ask(){
+    public static int ask(){
         int respond = 0;
 
         try{
