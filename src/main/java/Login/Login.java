@@ -3,6 +3,7 @@ package Login;
 import User.User;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -81,9 +82,17 @@ public class Login {
                 System.out.println("Error inputting password");
             }
 
-
-
-            loginSuccess =  test.getEmail().equals(email) && test.getPassword().equals(password);
+            try{
+                String tempUser = "", tempPass = "";
+                Scanner readIn = new Scanner (new File(email));
+                while(readIn.hasNext()){
+                    tempUser = readIn.nextLine();
+                    tempPass = readIn.nextLine();
+                }
+                loginSuccess =  email.contentEquals(tempUser) && password.contentEquals(tempPass);
+            }catch(Exception e){
+                loginSuccess = false;
+            }
 
             if (loginSuccess)
                 return loginSuccess;
