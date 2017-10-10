@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/UHSDFall17/project7.svg?branch=master)](https://travis-ci.org/UHSDFall17/project7)
+
 WELCOME to Group 7's repo!
 
 This is Project Acorns!
