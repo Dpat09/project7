@@ -1,17 +1,19 @@
-package Main;
+package Start;
 
 import Login.Login;
 import Portfolio.Portfolio;
+import User.User;
 
 import java.util.Scanner;
 
-public class main {
+public class Start {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
         Portfolio kingsley = new Portfolio();
-        kingsley.printPortfolio();
-        Login.launchLoginMenu();
+        //kingsley.printPortfolio();
+        User currentUser = new User();
+        boolean loginSuccess = Login.launchLoginMenu(currentUser);
     }
     public static void splashScreen() {
 

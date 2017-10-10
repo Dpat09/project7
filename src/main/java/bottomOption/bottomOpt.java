@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class bottomOpt {
 
     public static void nextRespond(){
-        System.out.println("1. Exit the Application \n"+"2. Return to Main\n");
+        System.out.println("1. Exit the Application \n"+"2. Return to Start\n");
         int Nextoption = 0;
 
         try{
