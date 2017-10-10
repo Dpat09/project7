@@ -1,0 +1,6 @@
+language: java
+script: mvn clean compile -DskiptTests
+notifications:
+  email:
+    - dpat092@gmail.com
+    - ryan.gonzalez064@gmail.com
