@@ -1,6 +1,7 @@
 package Portfolio;
 
 import bottomOption.bottomOpt;
+import dePosit_withDraw.Deposit_Withdraw;
 
 
 
@@ -15,17 +16,22 @@ public class Portfolio {
     double SmallCompanyStock;
     double LargeCompanyStock;
     double internationalLargeStock;
-    String TypeOfPortfolio;
+    String TypeOfPortfolioStr;
 
-    public void setPortfolio(double CB, String TOP){
 
+    public void DisplayPortfolioOptions(double CB){
+
+        System.out.println(" 1 Conservative \n");
+        System.out.println(" 2 ModeratelyConservation \n");
+        System.out.println(" 3 Moderate \n");
+        System.out.println(" 4 ModeratelyAggressive \n");
+        System.out.println(" 5 Aggressive \n");
+
+        int respondsOption = Deposit_Withdraw.ask();
+
+
+        setupPortfolioType(respondsOption);
         currentBalance = CB;
-
-        TypeOfPortfolio = TOP;
-
-
-        setupPortfolioType(TypeOfPortfolio);
-
     }
 
 
@@ -34,7 +40,8 @@ public class Portfolio {
         System.out.println("\t\t========================\n" +
                 "\t\t   PORTFOLIO!  \n" +
                 "\t\t========================\n\n");
-        System.out.println(currentBalance);
+        System.out.println("Your current balance is "+ currentBalance);
+        System.out.println("Current Portfolio type: "+ TypeOfPortfolioStr);
         System.out.println("\n");
         System.out.println("\n");
         System.out.println("\n");
@@ -57,30 +64,33 @@ public class Portfolio {
         bottomOpt.nextRespond();
     }
 
-    public void setupPortfolioType(String TypeOfPortfolio){
+    public void setupPortfolioType(int TypeOfPortfolio){
 
-        if(TypeOfPortfolio == "Conservative"){
+        if(TypeOfPortfolio == 1){
+            TypeOfPortfolioStr = "Conservative";
 
             setupInvestmentSector(40,2,40,0,2,12,4);
 
-        }else if(TypeOfPortfolio == "ModeratelyConservation"){
+        }else if(TypeOfPortfolio == 2){
+            TypeOfPortfolioStr = "ModeratelyConservation";
 
             setupInvestmentSector(30,4,30,0,4,24,8);
 
-        }else if(TypeOfPortfolio == "Moderate"){
+        }else if(TypeOfPortfolio == 3){
+            TypeOfPortfolioStr = "Moderate";
 
             setupInvestmentSector(20,6,20,3,10,29,12);
 
-        }else if(TypeOfPortfolio == "ModeratelyAggressive"){
+        }else if(TypeOfPortfolio == 4){
+            TypeOfPortfolioStr = "ModeratelyAggressive";
 
             setupInvestmentSector(10,8,10,4,14,38,16);
 
-        }else if(TypeOfPortfolio == "Aggressive"){
+        }else if(TypeOfPortfolio == 5){
+            TypeOfPortfolioStr = "Aggressive";
             setupInvestmentSector(0,10,0,10,20,40,20);
-        }else{
-
-
         }
+
 
 
 
