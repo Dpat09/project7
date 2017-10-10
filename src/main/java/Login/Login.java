@@ -53,8 +53,6 @@ public class Login {
             default:
                 return false;
         }
-        //ArrayList<User> list = new ArrayList<User>();
-        //list.add(new User("test","123","test@test.com"));
         return false;
     }
 
@@ -82,9 +80,14 @@ public class Login {
                 System.out.println("Error inputting password");
             }
 
+            /*
+                   Using basic file I/O with scanner object. What it does it look for a text file named "email".
+                   For example if the email entered was "test@test.com", readIn will try to open a file named "test@test.com.txt"
+                   As we only need one user at a time, they do not need to be stored into an array at all.
+                 */
             try{
                 String tempUser = "", tempPass = "";
-                Scanner readIn = new Scanner (new File(email));
+                Scanner readIn = new Scanner (new File(email+".txt"));
                 while(readIn.hasNext()){
                     tempUser = readIn.nextLine();
                     tempPass = readIn.nextLine();
