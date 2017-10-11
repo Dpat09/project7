@@ -10,11 +10,11 @@ import java.util.Scanner;
 public class Login {
     public static boolean launchLoginMenu(User currentUser) {
 
-        int option = 0;
+        int option;
         while (true) {
             System.out.println("\t\t========================\n" +
-                               "\t\t   WELCOME TO ACORNS!  \n" +
-                               "\t\t========================\n");
+                    "\t\t   WELCOME TO ACORNS!  \n" +
+                    "\t\t========================\n");
 
             System.out.println("1. Login\n" + "2. Sign up\n" + "3. Exit\n");
             System.out.print("Please select an option by entering either 1 or 2 or 3: ");
@@ -32,22 +32,28 @@ public class Login {
             }
 
         }
-        User test = new User("test", "123", "test@test.com");
+        //User test = new User("test", "123", "test@test.com");
         switch (option) {
 
             case 1: //Launch Login
-                boolean ifSuccess = launchLogin(test);
-                return ifSuccess;
+                return launchLogin(currentUser);
+                //return ifSuccess;
 
             case 2: //Launch SignUp
-                launchSignup();
+                launchSignup(currentUser);
+//                System.out.println(
+//                        "Name: "+currentUser.getName()+
+//                        "Email: "+currentUser.getPassword()+
+//                        "Pass: "+currentUser.getPassword()
+//
+//                );
                 break;
 
             case 3: //Exit program
                 System.out.println(
-                          "\t\t===============================\n"+
-                            "\t\t  Thank you for using Acorns!\n"+
-                          "\t\t===============================\n"
+                        "\t\t===============================\n" +
+                                "\t\t  Thank you for using Acorns!\n" +
+                                "\t\t===============================\n"
                 );
                 System.exit(0);
             default:
@@ -56,61 +62,95 @@ public class Login {
         return false;
     }
 
-    public static boolean launchLogin(User test) {
-        String email = "", password = "";
-        boolean loginSuccess = false;
+    private static boolean launchLogin(User currentUser) {
+        String email, password, name = "";
+        boolean loginSuccess;
 
         while (true) {
             System.out.println("\t\t========================\n" +
                     "\t\t        Sign In!        \n" +
                     "\t\t========================\n\n");
 
-            System.out.print("Email: ");
-            Scanner input = new Scanner(System.in);
-            try {
-                email = input.nextLine();
-            } catch (Exception e) {
-                System.out.println("Error inputting email");
-            }
-
-            System.out.print("Password: ");
-            try {
-                password = input.nextLine();
-            } catch (Exception e) {
-                System.out.println("Error inputting password");
-            }
-
+              email = inputEmail();
+              password = inputPass();
             /*
                    Using basic file I/O with scanner object. What it does it look for a text file named "email".
                    For example if the email entered was "test@test.com", readIn will try to open a file named "test@test.com.txt"
                    As we only need one user at a time, they do not need to be stored into an array at all.
-                 */
+            */
             try{
                 String tempUser = "", tempPass = "";
                 Scanner readIn = new Scanner (new File(email+".txt"));
                 while(readIn.hasNext()){
                     tempUser = readIn.nextLine();
                     tempPass = readIn.nextLine();
+                    name = readIn.nextLine();
                 }
                 loginSuccess =  email.contentEquals(tempUser) && password.contentEquals(tempPass);
             }catch(Exception e){
                 loginSuccess = false;
             }
 
-            if (loginSuccess)
+            if (loginSuccess) {
+                currentUser.setName(name);
+                currentUser.setEmail(email);
+                currentUser.setPassword(password);
                 return loginSuccess;
+            }
             else
                 System.out.println("Invalid input, username or password is incorrect\n\n");
         }
 
 
+
     }
 
-    public static void launchSignup() {
+    private static void launchSignup(User currentUser) {
+        String email = "", password = "", name = "";
+        boolean loginSuccess;
+
         System.out.println("\t\t========================\n" +
                 "\t\t        Sign Up!        \n" +
                 "\t\t========================\n\n");
+        System.out.println("Please enter the following information to get started!");
 
+        System.out.print("Name: ");
+        Scanner input = new Scanner(System.in);
+        try {
+            name = input.nextLine();
+        } catch (Exception e) {
+            System.out.println("Error inputting email");
+        }
+        email = inputEmail();
+        password = inputPass();
+
+        currentUser.setName(name);
+        currentUser.setEmail(email);
+        currentUser.setPassword(password);
+    }
+
+    private static String inputEmail (){
+        String email = "";
+        System.out.print("Email: ");
+        Scanner input = new Scanner(System.in);
+        try {
+            email = input.nextLine();
+        } catch (Exception e) {
+            System.out.println("Error inputting email");
+        }
+        return email;
+    }
+
+    private static String inputPass(){
+        String password = "";
+        System.out.print("Password: ");
+        Scanner input = new Scanner(System.in);
+        try {
+            password = input.nextLine();
+        } catch (Exception e) {
+            System.out.println("Error inputting password");
+        }
+        return password;
     }
 
 }
