@@ -4,6 +4,9 @@ import User.User;
 
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -65,8 +68,9 @@ public class Login {
     private static boolean launchLogin(User currentUser) {
         String email, password, name = "";
         boolean loginSuccess;
+        int trigger = 0;
 
-        while (true) {
+        while (trigger < 4) {
             System.out.println("\t\t========================\n" +
                     "\t\t        Sign In!        \n" +
                     "\t\t========================\n\n");
@@ -97,12 +101,12 @@ public class Login {
                 currentUser.setPassword(password);
                 return loginSuccess;
             }
-            else
+            else {
+                trigger++;
                 System.out.println("Invalid input, username or password is incorrect\n\n");
+            }
         }
-
-
-
+        return true;
     }
 
     private static void launchSignup(User currentUser) {
@@ -127,6 +131,16 @@ public class Login {
         currentUser.setName(name);
         currentUser.setEmail(email);
         currentUser.setPassword(password);
+
+        try {
+            PrintWriter saveUser = new PrintWriter(new FileWriter(email));
+            saveUser.println(email);
+            saveUser.println(password);
+            saveUser.println(name);
+        } catch (IOException e) {
+            System.out.println("error occurred while outputting user object file");
+        }
+
     }
 
     private static String inputEmail (){
