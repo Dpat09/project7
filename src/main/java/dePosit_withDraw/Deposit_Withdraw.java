@@ -8,8 +8,6 @@ public class Deposit_Withdraw {
 
     int currentBalance;
 
-
-
     public void TransactionOption(int ActualCurrentBalance){
 
         System.out.println("Please choose your transaction \n"+" 1. Deposit  or  2. WithDraw \n");

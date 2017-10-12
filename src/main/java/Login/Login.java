@@ -40,7 +40,6 @@ public class Login {
 
             case 1: //Launch Login
                 return launchLogin(currentUser);
-                //return ifSuccess;
 
             case 2: //Launch SignUp
                 launchSignup(currentUser);
@@ -99,7 +98,7 @@ public class Login {
                 currentUser.setName(name);
                 currentUser.setEmail(email);
                 currentUser.setPassword(password);
-                return loginSuccess;
+                return true;
             }
             else {
                 trigger++;
@@ -123,7 +122,7 @@ public class Login {
         try {
             name = input.nextLine();
         } catch (Exception e) {
-            System.out.println("Error inputting email");
+            System.out.println("Error inputting name");
         }
         email = inputEmail();
         password = inputPass();
@@ -137,6 +136,7 @@ public class Login {
             saveUser.println(email);
             saveUser.println(password);
             saveUser.println(name);
+            saveUser.close();
         } catch (IOException e) {
             System.out.println("error occurred while outputting user object file");
         }

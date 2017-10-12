@@ -8,7 +8,7 @@ import dePosit_withDraw.Deposit_Withdraw;
 
 public class Portfolio {
 
-    double currentBalance;
+    private double currentBalance;
     double GovBondValue;
     double RealEstateStock;
     double corporateBondsValue;
@@ -18,6 +18,9 @@ public class Portfolio {
     double internationalLargeStock;
     String TypeOfPortfolioStr;
 
+    public Portfolio(){
+
+    }
 
     public void DisplayPortfolioOptions(double CB){
 
@@ -42,11 +45,11 @@ public class Portfolio {
                 "\t\t========================\n\n");
         System.out.println("Your current balance is "+ currentBalance);
         System.out.println("Current Portfolio type: "+ TypeOfPortfolioStr);
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("Government Bonds       $" + GovBondValue );
+//        System.out.println("\n");
+//        System.out.println("\n");
+//        System.out.println("\n");
+//        System.out.println("\n");
+        System.out.println("\n\nGovernment Bonds       $" + GovBondValue );
         System.out.println("Corporate Bonds        $" + corporateBondsValue);
         System.out.println("Real Estate Stocks     $" + RealEstateStock);
         System.out.println("Emerging Market Stocks $" + EmergingMarketStock);
@@ -106,7 +109,6 @@ public class Portfolio {
          SmallCompanyStock = generatePercent(SCS);
          LargeCompanyStock = generatePercent(LCS);
          internationalLargeStock = generatePercent(ILS);
-
 
     }
 
