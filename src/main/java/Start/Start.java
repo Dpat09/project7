@@ -1,5 +1,6 @@
 package Start;
 
+import Dashboard.Dashboard;
 import Login.Login;
 import Portfolio.Portfolio;
 import User.User;
@@ -10,10 +11,12 @@ public class Start {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-        Portfolio kingsley = new Portfolio();
-        //kingsley.printPortfolio();
+        Portfolio currentUserPortfolio = new Portfolio();
+        //kingsley.DisplayPortfolioOptions();
         User currentUser = new User();
         boolean loginSuccess = Login.launchLoginMenu(currentUser);
+        //Dashboard.launchDash(currentUser);
+
     }
     public static void splashScreen() {
 
