@@ -1,9 +1,8 @@
 package Portfolio;
 
 import bottomOption.bottomOpt;
-import dePosit_withDraw.Deposit_Withdraw;
 
-
+import java.util.Scanner;
 
 
 public class Portfolio {
@@ -17,12 +16,17 @@ public class Portfolio {
     double LargeCompanyStock;
     double internationalLargeStock;
     String TypeOfPortfolioStr;
+    String UserName;
 
-    public Portfolio(){
+    public Portfolio(String User, int PortfolioType,double CB){
 
+        UserName = User;
+        currentBalance = CB;
+
+        setupPortfolioType(PortfolioType);
     }
 
-    public void DisplayPortfolioOptions(double CB){
+    public void DisplayPortfolioOptions(){
 
         System.out.println(" 1 Conservative \n");
         System.out.println(" 2 ModeratelyConservation \n");
@@ -30,11 +34,6 @@ public class Portfolio {
         System.out.println(" 4 ModeratelyAggressive \n");
         System.out.println(" 5 Aggressive \n");
 
-        int respondsOption = Deposit_Withdraw.ask();
-
-
-        setupPortfolioType(respondsOption);
-        currentBalance = CB;
     }
 
 
@@ -64,7 +63,7 @@ public class Portfolio {
         System.out.println("\n");
 
 
-        bottomOpt.nextRespond();
+        //bottomOpt.nextRespond();
     }
 
     public void setupPortfolioType(int TypeOfPortfolio){
@@ -96,8 +95,6 @@ public class Portfolio {
 
 
 
-
-
     }
 
     public void setupInvestmentSector(int GBV,int RES, int CBV, int EMS, int SCS, int LCS, int ILS){
@@ -120,8 +117,15 @@ public class Portfolio {
         return percentageValue;
     }
 
+    // for testing purpose
+    public String getPortfolioType(){
 
+        return TypeOfPortfolioStr;
+    }
+    public String getPortfolioUserName(){
 
+        return UserName;
+    }
 
 
 }
