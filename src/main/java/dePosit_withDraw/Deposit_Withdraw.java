@@ -8,6 +8,20 @@ public class Deposit_Withdraw {
 
     int currentBalance;
 
+    public Deposit_Withdraw (int ActualCurrentBalance,String Deposit_Withdraw, int amount){
+
+           if(Deposit_Withdraw == "Deposit"){
+
+               Deposit(ActualCurrentBalance,amount);
+
+           }else(Deposit_Withdraw == "withDraw"){
+
+              withDraw(ActualCurrentBalance,amount);
+           }
+
+
+    }
+
     public void TransactionOption(int ActualCurrentBalance){
 
         System.out.println("Please choose your transaction \n"+" 1. Deposit  or  2. WithDraw \n");
@@ -19,11 +33,11 @@ public class Deposit_Withdraw {
 
             if(inputValue == 1){
 
-                withDraw(ActualCurrentBalance);
+                //withDraw(ActualCurrentBalance);
 
             }else if (inputValue == 2){
 
-                Deposit(ActualCurrentBalance);
+               // Deposit(ActualCurrentBalance);
 
             }
 
@@ -36,27 +50,27 @@ public class Deposit_Withdraw {
 
     }
 
-    public void withDraw(int balance){
+    public void withDraw(int balance, int transactionAmount){
         System.out.println("welcome withdraw section of your account\n" +
                 "your current balance is " + balance +"\n" +
                 "How much would you like to Withdraw today");
 
-         int withdrawValue = ask();
 
-         currentBalance = balance - withdrawValue;
+
+         currentBalance = balance - transactionAmount;
 
     }
 
-    public void Deposit(int balance){
+    public void Deposit(int balance , int transactionAmount){
         System.out.println("welcome Deposit section of your account\n" +
                 "your current balance is " + balance +"\n" +
                 "How much would you like to deposit today");
 
 
-        int DepositValue = ask();
 
 
-        currentBalance = balance + DepositValue;
+
+        currentBalance = balance + transactionAmount;
     }
 
     public static int ask(){
@@ -74,6 +88,13 @@ public class Deposit_Withdraw {
         }
 
         return respond;
+    }
+
+
+    //testing purposes
+    public int getNewBalance(){
+
+        return currentBalance;
     }
 
 
