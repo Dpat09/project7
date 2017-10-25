@@ -8,19 +8,18 @@ public class Deposit_Withdraw {
 
     int currentBalance;
 
-    public Deposit_Withdraw (int ActualCurrentBalance,String Deposit_Withdraw, int amount){
-
-           if(Deposit_Withdraw == "Deposit"){
-
-               Deposit(ActualCurrentBalance,amount);
-
-           }else(Deposit_Withdraw == "withDraw"){
-
-              withDraw(ActualCurrentBalance,amount);
-           }
-
-
-    }
+//    public Deposit_Withdraw (int ActualCurrentBalance,String Deposit_Withdraw, int amount){
+//
+//           if(Deposit_Withdraw.equalsIgnoreCase("deposit")){
+//
+//               Deposit(ActualCurrentBalance,amount);
+//
+//           }
+//           else(Deposit_Withdraw.equalsIgnoreCase("withdraw")){
+//
+//               withDraw(ActualCurrentBalance,amount);
+//           }
+//    }
 
     public void TransactionOption(int ActualCurrentBalance){
 

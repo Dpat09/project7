@@ -11,7 +11,7 @@ public class Start {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-        Portfolio currentUserPortfolio = new Portfolio();
+        //Portfolio currentUserPortfolio = new Portfolio();
         //kingsley.DisplayPortfolioOptions();
         User currentUser = new User();
         boolean loginSuccess = Login.launchLoginMenu(currentUser);

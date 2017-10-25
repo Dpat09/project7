@@ -1,5 +1,6 @@
 package Login;
 
+import Portfolio.Portfolio;
 import User.User;
 
 
@@ -127,10 +128,15 @@ public class Login {
         email = inputEmail();
         password = inputPass();
 
+        // Add banking information and save to bank object
+        // Store Current current balance
+
         currentUser.setName(name);
         currentUser.setEmail(email);
         currentUser.setPassword(password);
-
+        //Portfolio user = new Portfolio();
+        //user.DisplayPortfolioOptions(100.17);
+        //user.printPortfolio();
         try {
             PrintWriter saveUser = new PrintWriter(new FileWriter(email));
             saveUser.println(email);
