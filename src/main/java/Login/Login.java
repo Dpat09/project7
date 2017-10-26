@@ -26,6 +26,7 @@ public class Login {
             try {
                 Scanner input = new Scanner(System.in);
                 option = input.nextInt();
+
                 if (option == 1 || option == 2 || option == 3) {
                     break;
                 }
