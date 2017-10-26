@@ -1,6 +1,4 @@
-package Portfolio;
-
-import bottomOption.bottomOpt;
+package manageTransactions;
 
 import java.util.Scanner;
 
