@@ -1,9 +1,7 @@
 package dePosit_withDraw;
 
 import java.util.Scanner;
-/**
- * Created by Kingsley on 10/1/17.
- */
+
 public class Deposit_Withdraw {
 
     int currentBalance;
