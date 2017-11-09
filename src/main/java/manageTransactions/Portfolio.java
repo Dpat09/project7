@@ -3,18 +3,18 @@ package manageTransactions;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Portfolio {
+public class Portfolio implements moneyMovement{
     protected String aggression = ""; //portfolio type (conservative to aggressive)
     protected String investment_interval = "";
     protected double investment_amount = 0.00;
     protected boolean interval_switch = false;
     private double funds = 0.00;
 
-    ArrayList<Character> List = new ArrayList<Character>();
+    ArrayList<Character> aggressionList = new ArrayList<Character>();
     public Portfolio() {
-        List.add('C');
-        List.add('M');
-        List.add('A');
+        aggressionList.add('C');
+        aggressionList.add('M');
+        aggressionList.add('A');
     }
 
     public Double getFunds() {
@@ -29,13 +29,22 @@ public class Portfolio {
         Scanner scanner = new Scanner(System.in);
         aggression = scanner.nextLine();
         char type = aggression.charAt(0);
-        for (int i = 0; i < List.size(); i++){
-            if (!(List.get(i) == type)){
+
+        for (int i = 0; i < aggressionList.size(); i++){
+            if (!(aggressionList.get(i) == type)){
                 setAggression(aggression);
             }
             else {
                 aggression = Character.toString(type);
             }
         }
+    }
+
+    public void deposit(double amount) {
+        setFunds(amount+getFunds());
+    }
+
+    public void withDraw(double amount) {
+        setFunds((getFunds()-amount)>0?getFunds()-amount:getFunds());
     }
 }
