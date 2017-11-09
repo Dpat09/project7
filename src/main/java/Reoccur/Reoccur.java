@@ -29,7 +29,14 @@ public class Reoccur extends Portfolio {
         }
     }
 
-
+    void investAmount(){
+        System.out.println("Set investment amount (Amount > $1 only): ");
+        Scanner scanner = new Scanner(System.in);
+        investment_amount = scanner.nextInt();
+        if (investment_amount < 1){
+            investAmount();
+        }
+    }
 
     void setSwitch(){
         System.out.println("Would you like to have a reoccurring investment? (Y/N): ");
@@ -40,7 +47,8 @@ public class Reoccur extends Portfolio {
         }
         else {
             if (yesNo.equals("Y")) {interval_switch = true; }
-            else {interval_switch = false; }
+            else if (yesNo.equals("N")){interval_switch = false; }
+            else {setSwitch(); }
         }
     }
 }
