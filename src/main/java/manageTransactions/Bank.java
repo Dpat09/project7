@@ -5,12 +5,12 @@ public class Bank implements moneyMovement{
     private boolean overDraw;
 
     public Bank(){
-        setBalance(0);
+        updateBalance(0);
         overDraw = false;
     }
 
     public Bank(double amount, boolean flag){
-        setBalance(amount);
+        updateBalance(amount);
         setOverDraw(flag);
     }
 
@@ -18,7 +18,7 @@ public class Bank implements moneyMovement{
         return this.balance;
     }
 
-    private void setBalance(double amount){
+    private void updateBalance(double amount){
         this.balance = amount;
     }
 
@@ -35,12 +35,12 @@ public class Bank implements moneyMovement{
     }
 
     public void deposit(double amount) {
-        setBalance(getBalance()+amount);
+        updateBalance(getBalance()+amount);
     }
 
     public void withDraw(double amount) {
         double newBalance = getBalance()-amount;
         setOverDraw(!(newBalance > 0));
-        setBalance(!isOverDraw()? getBalance()-amount:getBalance());
+        updateBalance(!isOverDraw()? newBalance:getBalance());
     }
 }
