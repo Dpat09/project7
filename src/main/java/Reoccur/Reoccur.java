@@ -16,18 +16,24 @@ public class Reoccur extends Portfolio {
 
     void setReoccurring(){
         System.out.println("Set investment interval (D) (W) (M): ");
-//        Scanner scanner = new Scanner(System.in);
-//        investment_interval = scanner.nextLine();
+
         scannerInputs.scanStringInput(investment_interval);
         char type = investment_interval.charAt(0);
+        boolean isFound = false;
+
         for (int i = 0; i < optionList.size(); i++){
-            if (!(optionList.get(i) == type)){
-                setReoccurring();
+            if ((optionList.get(i) != type)){
+                isFound = false;
             }
             else {
-                investment_interval = Character.toString(type);
-                setSwitch();
+                isFound = true;
+                break;
             }
+        }
+        investment_interval = isFound ? Character.toString(type):investment_interval;
+        setSwitch();
+        if (!isFound){
+            setReoccurring();
         }
     }
 
