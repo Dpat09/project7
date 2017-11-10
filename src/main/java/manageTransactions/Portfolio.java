@@ -26,22 +26,24 @@ public class Portfolio implements moneyMovement{
     }
 
     public void setAggression(String aggression){
-        System.out.println("Set aggression on portfolio '(C), (M), (A)': ");
+        System.out.print("Set aggression on portfolio (C)onservative \n(M)oderate \n(A)ggresive \nEnter Choice:");
 
         scannerInputs.scanStringInput(aggression);
-//        Scanner scanner = new Scanner(System.in);
-//        aggression = scanner.nextLine();
         char type = Character.toUpperCase(aggression.charAt(0));
-
+        boolean isFound = false;
 
         for (int i = 0; i < aggressionList.size(); i++){
-            if (!(aggressionList.get(i) == type)){
-                setAggression(aggression);
+            if (aggressionList.get(i) != type){
+                isFound = false;
             }
             else {
-                aggression = Character.toString(type);
+                isFound = true;
+                break;
             }
         }
+        aggression = isFound ? Character.toString(type):aggression;
+        if (!isFound)
+            setAggression(aggression);
     }
 
     public void deposit(double amount) {
