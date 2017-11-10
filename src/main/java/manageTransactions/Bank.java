@@ -27,7 +27,7 @@ public class Bank implements moneyMovement{
     }
 
     public void setOverDraw(boolean flag){
-        setOverDraw(flag);
+        this.overDraw = flag;
     }
 
     public void resetOverDraw(){
