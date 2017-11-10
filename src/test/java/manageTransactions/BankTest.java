@@ -2,11 +2,14 @@ package manageTransactions;
 
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 
 public class BankTest {
 
     private Bank testBank = new Bank(100, false);
+    Random rand = new Random();
 
     @Test
     public void canaryTest() throws Exception{
@@ -27,6 +30,9 @@ public class BankTest {
     public void setOverDraw() throws Exception {
         testBank.setOverDraw(true);
         assertEquals(true,testBank.isOverDraw());
+
+        testBank.setOverDraw(false);
+        assertEquals(false,testBank.isOverDraw());
     }
 
     @Test
@@ -34,12 +40,19 @@ public class BankTest {
         testBank.setOverDraw(true);
         testBank.resetOverDraw();
         assertEquals(false, testBank.isOverDraw());
+
+        boolean randBool = rand.nextBoolean();
+        testBank.setOverDraw(randBool);
+        testBank.resetOverDraw();
+        assertEquals(false, testBank.isOverDraw());
     }
 
     @Test
     public void deposit() throws Exception {
-        testBank.deposit(15);
-        assertEquals(115,testBank.getBalance(),0);
+        double depositAmount = rand.nextDouble();
+        double expectedAmount = depositAmount+testBank.getBalance();
+        testBank.deposit(depositAmount);
+        assertEquals(expectedAmount,testBank.getBalance(),0);
     }
 
     @Test
