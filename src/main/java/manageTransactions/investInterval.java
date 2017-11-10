@@ -1,18 +1,20 @@
 package manageTransactions;
 
-import java.util.Scanner;
+import Utilities.scannerInputs;
 
 public class investInterval extends Portfolio{
     public void setreoccuring(Portfolio obj){
 
-        try{
-            Scanner input = new Scanner(System.in);
-            obj.investment_interval = input.nextLine();
-            input.close();
-        }
-        catch(Exception e){
-            System.out.println("Error setting investment interval");
-        }
+        scannerInputs.scanStringInput(obj.investment_interval);
+
+//        try{
+//            Scanner input = new Scanner(System.in);
+//            obj.investment_interval = input.nextLine();
+//            input.close();
+//        }
+//        catch(Exception e){
+//            System.out.println("Error setting investment interval");
+//        }
 
     }
 

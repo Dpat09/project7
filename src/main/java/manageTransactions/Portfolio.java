@@ -1,7 +1,8 @@
 package manageTransactions;
 
+import Utilities.scannerInputs;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Portfolio implements moneyMovement{
     protected String aggression = ""; //portfolio type (conservative to aggressive)
@@ -12,9 +13,9 @@ public class Portfolio implements moneyMovement{
 
     ArrayList<Character> aggressionList = new ArrayList<Character>();
     public Portfolio() {
-        aggressionList.add('C');
-        aggressionList.add('M');
-        aggressionList.add('A');
+        aggressionList.add('C');    //Conservative
+        aggressionList.add('M');    //Moderate
+        aggressionList.add('A');    //Aggressive
     }
 
     public Double getFunds() {
@@ -26,9 +27,12 @@ public class Portfolio implements moneyMovement{
 
     public void setAggression(String aggression){
         System.out.println("Set aggression on portfolio '(C), (M), (A)': ");
-        Scanner scanner = new Scanner(System.in);
-        aggression = scanner.nextLine();
-        char type = aggression.charAt(0);
+
+        scannerInputs.scanStringInput(aggression);
+//        Scanner scanner = new Scanner(System.in);
+//        aggression = scanner.nextLine();
+        char type = Character.toUpperCase(aggression.charAt(0));
+
 
         for (int i = 0; i < aggressionList.size(); i++){
             if (!(aggressionList.get(i) == type)){
