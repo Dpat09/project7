@@ -1,5 +1,6 @@
 package manageTransactions;
 
+import Utilities.query;
 import Utilities.scannerInputs;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class Portfolio implements moneyMovement{
     protected boolean interval_switch = false;
     private double funds = 0.00;
 
-    ArrayList<Character> aggressionList = new ArrayList<Character>();
+    private ArrayList<Character> aggressionList = new ArrayList<Character>();
     public Portfolio() {
         aggressionList.add('C');    //Conservative
         aggressionList.add('M');    //Moderate
@@ -25,25 +26,11 @@ public class Portfolio implements moneyMovement{
         this.funds = funds;
     }
 
-    public void setAggression(String aggression){
-        System.out.print("Set aggression on portfolio (C)onservative \n(M)oderate \n(A)ggresive \nEnter Choice:");
+    public void setAggression(){
+        String question = "Set aggression on portfolio: \n\n1.) Conservative \n2.) Moderate \n3.) Aggressive \n\nEnter Choice:";
+        //int input =
 
-        scannerInputs.scanStringInput(aggression);
-        char type = Character.toUpperCase(aggression.charAt(0));
-        boolean isFound = false;
-
-        for (int i = 0; i < aggressionList.size(); i++){
-            if (aggressionList.get(i) != type){
-                isFound = false;
-            }
-            else {
-                isFound = true;
-                break;
-            }
-        }
-        aggression = isFound ? Character.toString(type):aggression;
-        if (!isFound)
-            setAggression(aggression);
+        //System.out.println(input);
     }
 
     public void deposit(double amount) {
