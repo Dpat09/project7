@@ -17,7 +17,7 @@ public class Reoccur extends Portfolio {
     void setReoccurring(){
         System.out.println("Set investment interval (D) (W) (M): ");
 
-        scannerInputs.scanStringInput(investment_interval);
+        investment_interval = scannerInputs.scanStringInput();
         char type = investment_interval.charAt(0);
         boolean isFound = false;
 
@@ -37,11 +37,21 @@ public class Reoccur extends Portfolio {
         }
     }
 
+//    public void setReoccuringNEW(){
+//        System.out.print("Pick an investment interval:\n 1. Daily \n 2. Weekly \n 3. Monthly\n Enter Choice: ");
+//        int choice = 0;
+//        scannerInputs.scanIntegerInput(choice);
+//        //scannerInputs.scanStringInput(investment_interval);
+//        while(true){
+//
+//        }
+//    }
+
     void investAmount(){
         System.out.println("Set investment amount (Amount > $1 only): ");
 //        Scanner scanner = new Scanner(System.in);
 //        investment_amount = scanner.nextInt();
-        scannerInputs.scanDoubleInput(investment_amount);
+        investment_amount = scannerInputs.scanDoubleInput();
         if (investment_amount < 1){
             investAmount();
         }

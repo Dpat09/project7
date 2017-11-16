@@ -5,7 +5,7 @@ import Utilities.scannerInputs;
 public class investInterval extends Portfolio{
     public void setreoccuring(Portfolio obj){
 
-        scannerInputs.scanStringInput(obj.investment_interval);
+        obj.investment_interval = scannerInputs.scanStringInput();
 
 //        try{
 //            Scanner input = new Scanner(System.in);

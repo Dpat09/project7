@@ -3,7 +3,7 @@ package Utilities;
 import java.util.ArrayList;
 
 public class query {
-    public static String queryTest(String question, ArrayList<Integer> array, String store, String type) {
+    public static String optionsQuery(String question, ArrayList<Integer> array, String store, String type) {
         boolean flag = true;
         while (flag) {
             System.out.print(question);

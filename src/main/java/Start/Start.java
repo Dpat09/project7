@@ -2,6 +2,7 @@ package Start;
 
 import Login.Login;
 import User.User;
+import manageTransactions.Portfolio;
 
 import java.util.Scanner;
 
@@ -9,10 +10,11 @@ public class Start {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-        //Portfolio currentUserPortfolio = new Portfolio();
+        Portfolio currentUserPortfolio = new Portfolio();
+        currentUserPortfolio.setAggression();
         //kingsley.DisplayPortfolioOptions();
-        User currentUser = new User();
-        boolean loginSuccess = Login.launchLoginMenu(currentUser);
+        //User currentUser = new User();
+        //boolean loginSuccess = Login.launchLoginMenu(currentUser);
         //Dashboard.launchDash(currentUser);
 
     }
