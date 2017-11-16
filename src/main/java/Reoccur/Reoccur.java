@@ -39,8 +39,6 @@ public class Reoccur extends Portfolio {
 
     void investAmount(){
         System.out.println("Set investment amount (Amount > $1 only): ");
-//        Scanner scanner = new Scanner(System.in);
-//        investment_amount = scanner.nextInt();
         scannerInputs.scanDoubleInput(investment_amount);
         if (investment_amount < 1){
             investAmount();
