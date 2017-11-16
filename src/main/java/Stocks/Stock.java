@@ -1,4 +1,4 @@
-package stocks;
+package Stocks;
 
 public class Stock {
     private String symbol;
