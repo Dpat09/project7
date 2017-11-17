@@ -3,17 +3,20 @@ package Utilities;
 import java.util.ArrayList;
 
 public class query {
-    public static String optionsQuery(String question, ArrayList<Integer> array, String store, String type) {
+    public static int optionsQuery(String question, ArrayList<Integer> array) {
         boolean flag = true;
+        int store = 0;
         while (flag) {
             System.out.print(question);
-            store = scannerInputs.scanStringInput();
+            store = scannerInputs.scanIntegerInput();
             for (int i = 0; i < array.size(); i++) {
-                if (array.get(i).equals(Integer.parseInt(store))) {
+                if (array.get(i).equals(store)) {
                     flag = false;
                     break;
-                } else
-                    System.out.print("\nPlease choose one of the options!\n");
+                }
+            }
+            if (!flag){
+                System.out.print("\nPlease choose one of the options!\n");
             }
         }
         return store;
