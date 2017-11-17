@@ -1,4 +1,4 @@
-package stocks;
+package Stocks;
 
 import java.util.regex.Pattern;
 
