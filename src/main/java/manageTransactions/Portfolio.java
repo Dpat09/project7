@@ -12,11 +12,11 @@ public class Portfolio implements moneyMovement{
     protected boolean interval_switch = false;
     private double funds = 0.00;
 
-    private ArrayList<Character> aggressionList = new ArrayList<Character>();
+    private ArrayList<Integer> aggressionList = new ArrayList<Integer>();
     public Portfolio() {
-        aggressionList.add('C');    //Conservative
-        aggressionList.add('M');    //Moderate
-        aggressionList.add('A');    //Aggressive
+        aggressionList.add(1);    //Conservative
+        aggressionList.add(2);    //Moderate
+        aggressionList.add(3);    //Aggressive
     }
 
     public Double getFunds() {
@@ -28,9 +28,11 @@ public class Portfolio implements moneyMovement{
 
     public void setAggression(){
         String question = "Set aggression on portfolio: \n\n1.) Conservative \n2.) Moderate \n3.) Aggressive \n\nEnter Choice:";
-        //int input =
-
-        //System.out.println(input);
+        //int input = query.optionsQuery(question,aggressionList);
+        //System.out.println(scannerInputs.scanStringInput()+scannerInputs.scanStringInput());
+        String name = scannerInputs.scanStringInput();
+        String name1 = scannerInputs.scanStringInput();
+        System.out.println(name+name1);
     }
 
     public void deposit(double amount) {

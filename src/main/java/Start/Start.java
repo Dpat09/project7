@@ -12,6 +12,7 @@ public class Start {
         //splashScreen();
         Portfolio currentUserPortfolio = new Portfolio();
         currentUserPortfolio.setAggression();
+        User curret = null;
         //kingsley.DisplayPortfolioOptions();
         //User currentUser = new User();
         //boolean loginSuccess = Login.launchLoginMenu(currentUser);
