@@ -9,7 +9,7 @@ public class scannerInputs {
         try{
             Scanner scanner = new Scanner(System.in);
             String store = scanner.next();
-            scanner.close();
+            //scanner.close();
             return store;
         }catch (Exception e){
             System.out.println("scanInput Error! \nPlease check Utilities >> scannerInputs >> scanInput");
@@ -21,7 +21,7 @@ public class scannerInputs {
         try{
             Scanner scanner = new Scanner(System.in);
             String store = scanner.nextLine();
-            scanner.close();
+            //scanner.close();
             return store;
         }catch (Exception e){
             System.out.println("scanStringInput Error! \nPlease check Utilities >> scannerInputs >> scanStringInput");
@@ -33,9 +33,10 @@ public class scannerInputs {
         try{
             Scanner intScanner = new Scanner(System.in);
             int store = intScanner.nextInt();
-            intScanner.close();
+            //intScanner.close();
             return store;
         }catch (Exception e){
+            System.out.println(e);
             System.out.println("scanIntegerInput Error! \nPlease check Utilities >> scannerInputs >> scanIntegerInput");
         }
         return 0;
@@ -45,7 +46,7 @@ public class scannerInputs {
         try{
             Scanner doubleScanner = new Scanner(System.in);
             double store = doubleScanner.nextDouble();
-            doubleScanner.close();
+            //doubleScanner.close();
             return store;
         }catch (Exception e){
             System.out.println("scanDoubleInput Error! \nPlease check Utilities >> scannerInputs >> scanDoubleInput");
