@@ -91,6 +91,7 @@ public class Login {
                 }
                 loginSuccess =  email.contentEquals(tempUser) && password.contentEquals(tempPass);
             }catch(Exception e){
+                System.out.println(e);
                 loginSuccess = false;
             }
 
