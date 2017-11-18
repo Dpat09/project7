@@ -30,6 +30,18 @@ public class Portfolio implements moneyMovement{
     public int getInvestmentInterval(){return this.investmentInterval;}
     public int getAggression(){return this.aggression;}
 
+    public void setAggression(int aggression){
+        this.aggression = aggression;
+    }
+    public void setInvestmentInterval(int investmentInterval){
+        this.investmentInterval = investmentInterval;
+    }
+    public void setInvestmentAmount(double investmentAmount){
+        this.investmentAmount = investmentAmount;
+    }
+    public void setIntervalSwitch(boolean intervalSwitch){
+        this.intervalSwitch = intervalSwitch;
+    }
     public void setFunds(double funds) {
         this.funds = funds;
     }
