@@ -2,20 +2,20 @@ package Utilities;
 
 import java.util.ArrayList;
 
-public class query {
-    public static int optionsQuery(String question, ArrayList<Integer> array) {
+public class queryHandler {
+    public static int optionsQuery(String question, int numOptions) {
         boolean flag = true;
         int store = 0;
         while (flag) {
             System.out.print(question);
             store = scannerInputs.scanIntegerInput();
-            for (int i = 0; i < array.size(); i++) {
-                if (array.get(i).equals(store)) {
+            for (int i = 1; i <= numOptions; i++) {
+                if (i == store) {
                     flag = false;
                     break;
                 }
             }
-            if (!flag){
+            if (flag){
                 System.out.print("\nPlease choose one of the options!\n");
             }
         }

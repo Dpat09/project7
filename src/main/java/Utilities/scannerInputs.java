@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class scannerInputs {
 
     public static Comparable scanInput(){
-        //String store = null;
         try{
             Scanner scanner = new Scanner(System.in);
             String store = scanner.next();
