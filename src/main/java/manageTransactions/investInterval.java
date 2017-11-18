@@ -5,7 +5,7 @@ import Utilities.scannerInputs;
 public class investInterval extends Portfolio{
     public void setreoccuring(Portfolio obj){
 
-        obj.investment_interval = scannerInputs.scanStringInput();
+        //obj.investment_interval = scannerInputs.scanStringInput();
 
 //        try{
 //            Scanner input = new Scanner(System.in);
@@ -19,11 +19,11 @@ public class investInterval extends Portfolio{
     }
 
     public boolean investAmount(Portfolio obj, double newAmount){
-        obj.investment_amount = newAmount>=1 ? newAmount : obj.investment_amount;
+        //obj.investment_amount = newAmount>=1 ? newAmount : obj.investment_amount;
         return newAmount>=1;
     }
     public void setSwitch(Portfolio obj, boolean flag){
-        obj.interval_switch = flag;
+        //obj.interval_switch = flag;
     }
 
 
