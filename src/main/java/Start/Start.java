@@ -1,6 +1,8 @@
 package Start;
 
 import Login.Login;
+import Storage.UserStorage;
+import Storage.UserPortfolio;
 import User.User;
 import manageTransactions.Portfolio;
 
@@ -10,11 +12,36 @@ public class Start {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-        Portfolio currentUserPortfolio = new Portfolio();
-        currentUserPortfolio.setAggression();
-        User curret = null;
+        Portfolio currentUserPortfolio = new Portfolio(1,1,10,false,100);
+        //currentUserPortfolio.setAggression();
         //kingsley.DisplayPortfolioOptions();
-        //User currentUser = new User();
+         User currentUser = new User();
+         boolean checker;
+
+         currentUser.setName("kingsley12");
+         currentUser.setEmail("kingsley12@g.com");
+         currentUser.setPassword("thisONePassword");
+
+         User newUser = new User("dhaiwat","123","test@g.com");
+         Portfolio newPort = new Portfolio();//new Portfolio(2,2,12,true,100);
+
+         UserStorage CHE = new UserStorage();
+
+
+         UserPortfolio Che = new UserPortfolio();
+
+         Che.writeFile(currentUserPortfolio,currentUser);
+         //Che.writeFile(newPort,newUser);
+
+         Che.ReadFile(newPort,newUser);
+         //System.out.println(test);
+
+        System.out.println(newPort.getAggression());
+         //CHE.writeFile(currentUser);
+         //checker  = CHE.ReadFile(currentUser);
+
+        // System.out.println("live its saturday night live "+ checker);
+
         //boolean loginSuccess = Login.launchLoginMenu(currentUser);
         //Dashboard.launchDash(currentUser);
 

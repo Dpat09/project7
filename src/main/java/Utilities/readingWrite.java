@@ -4,12 +4,13 @@ package Utilities;
  * Created by Kingsley on 11/18/17.
  */
 import User.User;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import manageTransactions.Portfolio;
 import java.io.*;
 import  java.lang.*;
 import  java.util.*;
 
-public class readandWrite {
+public class readingWrite {
 
 
 
@@ -55,10 +56,14 @@ public class readandWrite {
 
             }else if(masterInstruction == "portfolio"){
 
-                bw.write(portfolio.getAggression());
-                bw.write(portfolio.getInvestmentInterval());
+                bw.write(String.valueOf(portfolio.getAggression()));
+                bw.newLine();
+                bw.write(String.valueOf(portfolio.getInvestmentInterval()));
+                bw.newLine();
                 bw.write(String.valueOf(portfolio.getInvestmentAmount()));
+                bw.newLine();
                 bw.write(String.valueOf(portfolio.getIntervalSwitch()));
+                bw.newLine();
                 bw.write(String.valueOf(portfolio.getFunds()));
 
 
@@ -119,12 +124,21 @@ public class readandWrite {
                 }
 
             }else if (masterInstruction == "portfolio"){
+                  int aggression = Integer.parseInt(Br.readLine());
+                  int investInterval = Integer.parseInt(Br.readLine());
+                  double investmentAmount = Double.parseDouble(Br.readLine());
+                  boolean intervalSwitch = Boolean.parseBoolean(Br.readLine());
+                  double funds = Double.parseDouble(Br.readLine());
 
+                  portfolio = new Portfolio(aggression,investInterval,investmentAmount,intervalSwitch,funds);
 
-                while((line = Br.readLine()) != null){
+                System.out.println(aggression);
+                System.out.println(investInterval);
 
-                    System.out.println(line);
-                }
+//                while((line = Br.readLine()) != null){
+//
+//                    System.out.println(line);
+//                }
 
 
             }
