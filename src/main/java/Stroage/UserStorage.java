@@ -12,22 +12,18 @@ import  java.util.*;
 import java.io.IOException;
 
 public class UserStorage {
-    private String name;
-    private String password;
-    private String email;
 
-   public UserStorage(User user){
 
-       this.name = user.getName();
-       this.email = user.getEmail();
-       this .password = user.getPassword();
+   public UserStorage(){
+
 
    }
 
-   public void writeFile(){
+   public void writeFile(User user){
 
-       String filename = "Storage//test.txt";
-       File theDir = new File("Storage//+email");
+       String filename = "Storage//"+user.getEmail()+"//user.txt";
+       File theDir = new File("Storage//" +user.getEmail());
+
        if (!theDir.exists()) {
            System.out.println("creating directory: " + theDir.getName());
            boolean result = false;
@@ -51,11 +47,11 @@ public class UserStorage {
 
        fw = new FileWriter(filename);
        bw = new BufferedWriter(fw);
-       bw.write(name);
+       bw.write(user.getName());
        bw.newLine();
-       bw.write(password);
+       bw.write(user.getPassword());
        bw.newLine();
-       bw.write(email);
+       bw.write(user.getEmail());
 
        System.out.print("Done");
 
@@ -90,6 +86,25 @@ public class UserStorage {
 
 
    }
+
+   public boolean ReadFile(User user){
+
+
+
+
+
+
+
+
+
+
+
+
+     return true;
+   }
+
+
+
 
 
 
