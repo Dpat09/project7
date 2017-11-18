@@ -4,6 +4,7 @@ public class User {
     private String name;
     private String password;
     private String email;
+    private boolean corporate;
 
     public User(){
 
@@ -37,6 +38,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isCorporate() {
+        return corporate;
+    }
+
+    public void setCorporate(boolean corporate) {
+        this.corporate = corporate;
     }
 }
 
