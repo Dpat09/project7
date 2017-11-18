@@ -19,9 +19,13 @@ public class Portfolio implements moneyMovement{
         aggressionList.add(3);    //Aggressive
     }
 
-    public Double getFunds() {
+    public double getFunds() {
         return this.funds;
     }
+    public boolean getIntervalSwitch(){return this.interval_switch;}
+    public double getInvestmentAmount(){return this.investment_amount;}
+    public String getInvestmentInterval(){return this.investment_interval;}
+    public String getAggression(){return this.aggression;}
     public void setFunds(double funds) {
         this.funds = funds;
     }
