@@ -39,8 +39,11 @@ public class Bank implements moneyMovement{
     }
 
     public void withDraw(double amount) {
-        double newBalance = getBalance()-amount;
-        setOverDraw(!(newBalance > 0));
-        updateBalance(!isOverDraw()? newBalance:getBalance());
+        if (getBalance() - amount > 0)
+            updateBalance(getBalance() - amount);
+        else{
+            setOverDraw(true);
+            System.out.println("Insufficient funds!\n"+"You cannot withdraw "+amount);
+        }
     }
 }
