@@ -4,6 +4,9 @@ package Storage;
  * Created by Kingsley on 11/16/17.
  */
 import User.User;
+import Utilities.readingWrite;
+import manageTransactions.Portfolio;
+
 import java.io.*;
 import  java.lang.*;
 import  java.util.*;
@@ -142,8 +145,26 @@ public class UserStorage {
 */
 
 
+   public void writeFile( User user){
+
+      readingWrite write = new readingWrite();
 
 
+      write.writeFile(user,null,"user");
+
+
+   }
+
+   public boolean ReadFile(User user){
+
+      readingWrite read = new readingWrite();
+
+
+      return read.ReadFile(user,null,"user");
+
+
+
+   }
 
 
 

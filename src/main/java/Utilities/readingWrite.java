@@ -4,7 +4,6 @@ package Utilities;
  * Created by Kingsley on 11/18/17.
  */
 import User.User;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import manageTransactions.Portfolio;
 import java.io.*;
 import  java.lang.*;
@@ -117,11 +116,10 @@ public class readingWrite {
             Br = new BufferedReader(fr);
 
             if(masterInstruction == "user"){
+                   user.setName(Br.readLine());
+                   user.setPassword(Br.readLine());
+                   user.setEmail(Br.readLine());
 
-                while((line = Br.readLine()) != null){
-
-                    System.out.println(line);
-                }
 
             }else if (masterInstruction == "portfolio"){
                   int aggression = Integer.parseInt(Br.readLine());
@@ -130,16 +128,11 @@ public class readingWrite {
                   boolean intervalSwitch = Boolean.parseBoolean(Br.readLine());
                   double funds = Double.parseDouble(Br.readLine());
 
-                  portfolio = new Portfolio(aggression,investInterval,investmentAmount,intervalSwitch,funds);
-
-                System.out.println(aggression);
-                System.out.println(investInterval);
-
-//                while((line = Br.readLine()) != null){
-//
-//                    System.out.println(line);
-//                }
-
+                  portfolio.setAggression(aggression);
+                  portfolio.setInvestmentInterval(investInterval);
+                  portfolio.setInvestmentAmount(investmentAmount);
+                  portfolio.setIntervalSwitch(intervalSwitch);
+                  portfolio.setFunds(funds);
 
             }
 
@@ -174,6 +167,9 @@ public class readingWrite {
 
         return true;
     }
+
+
+
 
 
 
