@@ -10,10 +10,11 @@ public class User {
 
     }
 
-    public User(String name, String password, String email){
+    public User(String name, String password, String email, boolean corporate){
         setName(name);
         setPassword(password);
         setEmail(email);
+        setCorporate(corporate);
     }
 
     public String getName() {
