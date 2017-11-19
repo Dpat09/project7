@@ -9,35 +9,17 @@ import User.User;
 import Utilities.readingWrite;
 import manageTransactions.Portfolio;
 
-public class UserPortfolio {
-
-
-
-
-
+public class portfolioStorage {
 
     public void writeFile(Portfolio portfolio, User user){
 
-        readingWrite write = new readingWrite();
-
-
-        write.writeFile(user,portfolio,"portfolio");
-
+        readingWrite.writeFile(user,portfolio,"portfolio");
 
     }
 
     public boolean ReadFile(Portfolio portfolio,User user){
 
-        readingWrite read = new readingWrite();
-
-
-        return read.ReadFile(user,portfolio,"portfolio");
-
-
+        return readingWrite.readFile(user,portfolio,"portfolio");
 
     }
-
-
-
-
 }
