@@ -15,10 +15,10 @@ public class Portfolio implements moneyMovement{
     }
 
     public Portfolio(int aggression, int investmentInterval, double investmentAmount, boolean intervalSwitch, double funds){
-        this.aggression = aggression;
-        this.investmentInterval = investmentInterval;
-        this.investmentAmount = investmentAmount;
-        this.intervalSwitch = intervalSwitch;
+        setAggression(aggression);
+        setInvestmentInterval(investmentInterval);
+        setInvestmentAmount(investmentAmount);
+        setIntervalSwitch(intervalSwitch);
         setFunds(funds);
     }
 
