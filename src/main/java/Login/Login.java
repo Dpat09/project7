@@ -1,45 +1,30 @@
 package Login;
 
+import Storage.userStorage;
 import User.User;
+import Utilities.queryHandler;
+import Utilities.scannerInputs;
 
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 public class Login {
     public static boolean launchLoginMenu(User currentUser) {
 
-        int option;
-        while (true) {
-            System.out.println("\t\t========================\n" +
-                    "\t\t   WELCOME TO ACORNS!  \n" +
-                    "\t\t========================\n");
+        String title = "\t\t========================\n" +
+                "\t\t   WELCOME TO ACORNS!  \n" +
+                "\t\t========================\n";
 
-            System.out.println("1. Login\n" + "2. Sign up\n" + "3. Exit\n");
-            System.out.print("Please select an option by entering either 1 or 2 or 3: ");
+        String question = "1.) Login \n2.) Sign Up \n3.) Exit \n\nEnter Choice:";
+        int option = queryHandler.optionsQuery(title+question,3);
 
-            try {
-                Scanner input = new Scanner(System.in);
-                option = input.nextInt();
-
-                if (option == 1 || option == 2 || option == 3) {
-                    break;
-                }
-
-            } catch (Exception e) {
-                //Runtime.getRuntime().exec("clear");
-                System.out.println("Please enter a valid option");
-            }
-
-        }
         //User test = new User("test", "123", "test@test.com");
         switch (option) {
 
             case 1: //Launch Login
-                return launchLogin(currentUser);
+                return launchLogin(currentUser) < 4;
 
             case 2: //Launch SignUp
                 launchSignup(currentUser);
@@ -58,13 +43,11 @@ public class Login {
                                 "\t\t===============================\n"
                 );
                 System.exit(0);
-            default:
-                return false;
         }
         return false;
     }
 
-    private static boolean launchLogin(User currentUser) {
+    private static int launchLogin(User currentUser) {
         String email, password, name = "";
         boolean loginSuccess;
         int trigger = 0;
@@ -74,43 +57,20 @@ public class Login {
                     "\t\t        Sign In!        \n" +
                     "\t\t========================\n\n");
 
-              email = inputEmail();
-              password = inputPass();
-            /*
-                   Using basic file I/O with scanner object. What it does it look for a text file named "email".
-                   For example if the email entered was "test@test.com", readIn will try to open a file named "test@test.com.txt"
-                   As we only need one user at a time, they do not need to be stored into an array at all.
-            */
-            try{
-                String tempUser = "", tempPass = "";
-                Scanner readIn = new Scanner (new File(email+".txt"));
-                while(readIn.hasNext()){
-                    tempUser = readIn.nextLine();
-                    tempPass = readIn.nextLine();
-                    name = readIn.nextLine();
-                }
-                loginSuccess =  email.contentEquals(tempUser) && password.contentEquals(tempPass);
-            }catch(Exception e){
-                System.out.println(e);
-                loginSuccess = false;
-            }
+            currentUser.setEmail(inputInfo("Email: "));
+            password = inputInfo("Password: ");
 
-            if (loginSuccess) {
-                currentUser.setName(name);
-                currentUser.setEmail(email);
-                currentUser.setPassword(password);
-                return true;
-            }
+            if (userStorage.readFile(currentUser) && currentUser.getPassword().equals(password))
+                return trigger;
             else {
                 trigger++;
                 System.out.println("Invalid input, username or password is incorrect\n\n");
             }
         }
-        return true;
+        return trigger;
     }
 
     private static void launchSignup(User currentUser) {
-        String email = "", password = "", name = "";
         boolean loginSuccess;
 
         System.out.println("\t\t========================\n" +
@@ -118,15 +78,10 @@ public class Login {
                 "\t\t========================\n\n");
         System.out.println("Please enter the following information to get started!");
 
-        System.out.print("Name: ");
-        Scanner input = new Scanner(System.in);
-        try {
-            name = input.nextLine();
-        } catch (Exception e) {
-            System.out.println("Error inputting name");
-        }
-        email = inputEmail();
-        password = inputPass();
+        String name = scannerInputs.scanStringInput();
+        String email = scannerInputs.scanStringInput();
+        String password = scannerInputs.scanStringInput();
+
 
         // Add banking information and save to bank object
         // Store Current current balance
@@ -149,28 +104,8 @@ public class Login {
 
     }
 
-    private static String inputEmail (){
-        String email = "";
-        System.out.print("Email: ");
-        Scanner input = new Scanner(System.in);
-        try {
-            email = input.nextLine();
-        } catch (Exception e) {
-            System.out.println("Error inputting email");
-        }
-        return email;
+    private static String inputInfo (String title){
+        System.out.print(title);
+        return scannerInputs.scanStringInput();
     }
-
-    private static String inputPass(){
-        String password = "";
-        System.out.print("Password: ");
-        Scanner input = new Scanner(System.in);
-        try {
-            password = input.nextLine();
-        } catch (Exception e) {
-            System.out.println("Error inputting password");
-        }
-        return password;
-    }
-
 }
