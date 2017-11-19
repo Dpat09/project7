@@ -11,9 +11,7 @@ import  java.util.*;
 
 public class readingWrite {
 
-
-
-    public void writeFile(User user,Portfolio portfolio, String masterInstruction){
+    public static void writeFile(User user,Portfolio portfolio, String masterInstruction){
 
         String filename = "Storage//"+user.getEmail()+"//"+masterInstruction+".txt";
         File theDir = new File("Storage//" +user.getEmail());
@@ -37,23 +35,22 @@ public class readingWrite {
         FileWriter fw = null;
         try{
 
-
-
             fw = new FileWriter(filename);
             bw = new BufferedWriter(fw);
 
-
-            if(masterInstruction == "user"){
+            if(masterInstruction.equalsIgnoreCase("user")){
 
                 bw.write(user.getName());
                 bw.newLine();
                 bw.write(user.getPassword());
                 bw.newLine();
                 bw.write(user.getEmail());
+                bw.newLine();
+                bw.write(String.valueOf(user.isCorporate()));
 
                 System.out.print("userDone");
 
-            }else if(masterInstruction == "portfolio"){
+            }else if(masterInstruction.equalsIgnoreCase("portfolio")){
 
                 bw.write(String.valueOf(portfolio.getAggression()));
                 bw.newLine();
@@ -65,12 +62,9 @@ public class readingWrite {
                 bw.newLine();
                 bw.write(String.valueOf(portfolio.getFunds()));
 
-
             }else{
                 System.out.println("something went wrong");
             }
-
-
 
         }catch (IOException e){
 
@@ -79,7 +73,6 @@ public class readingWrite {
 
         }finally {
             try{
-
 
                 if (bw != null){
 
@@ -90,20 +83,15 @@ public class readingWrite {
                     fw.close();
                 }
 
-
             }catch (IOException ex) {
 
                 ex.printStackTrace();
 
             }
-
-
         }
-
-
     }
 
-    public boolean ReadFile(User user,Portfolio portfolio, String masterInstruction ){
+    public static boolean readFile(User user, Portfolio portfolio, String masterInstruction ){
 
         String filename = "Storage//"+user.getEmail()+"//"+masterInstruction+".txt";
 
@@ -115,13 +103,12 @@ public class readingWrite {
             fr = new FileReader(filename);
             Br = new BufferedReader(fr);
 
-            if(masterInstruction == "user"){
+            if(masterInstruction.equalsIgnoreCase("user")){
                    user.setName(Br.readLine());
                    user.setPassword(Br.readLine());
                    user.setEmail(Br.readLine());
 
-
-            }else if (masterInstruction == "portfolio"){
+            }else if (masterInstruction.equalsIgnoreCase("portfolio")){
                   int aggression = Integer.parseInt(Br.readLine());
                   int investInterval = Integer.parseInt(Br.readLine());
                   double investmentAmount = Double.parseDouble(Br.readLine());
@@ -133,46 +120,28 @@ public class readingWrite {
                   portfolio.setInvestmentAmount(investmentAmount);
                   portfolio.setIntervalSwitch(intervalSwitch);
                   portfolio.setFunds(funds);
-
             }
-
         }catch (IOException e){
 
             System.out.println("something went wrong while reading ");
             e.printStackTrace();
-
             return false;
 
         }finally {
             try{
 
-
                 if (Br != null){
-
                     Br.close();
                 }
                 if (fr != null){
-
                     fr.close();
                 }
-
-
             }catch (IOException ex) {
 
                 ex.printStackTrace();
 
             }
         }
-
-
         return true;
     }
-
-
-
-
-
-
-
-
 }
