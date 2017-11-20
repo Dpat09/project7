@@ -8,9 +8,9 @@ import Utilities.readingWrite;
 
 public class userStorage {
 
-   public static void writeFile( User user){
+   public static boolean writeFile( User user){
 
-      readingWrite.writeFile(user,null,"user");
+      return readingWrite.writeFile(user,null,"user");
 
    }
 

@@ -11,9 +11,9 @@ import manageTransactions.Portfolio;
 
 public class portfolioStorage {
 
-    public void writeFile(Portfolio portfolio, User user){
+    public boolean writeFile(Portfolio portfolio, User user){
 
-        readingWrite.writeFile(user,portfolio,"portfolio");
+        return readingWrite.writeFile(user,portfolio,"portfolio");
 
     }
 
