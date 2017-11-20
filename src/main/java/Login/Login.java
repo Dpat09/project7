@@ -20,6 +20,7 @@ public class Login {
         String question = "1.) Login \n2.) Sign Up \n3.) Exit \n\nEnter Choice:";
         int option = queryHandler.optionsQuery(title+question,3);
 
+
         //User test = new User("test", "123", "test@test.com");
         switch (option) {
 
@@ -31,9 +32,7 @@ public class Login {
                 }
                 return loginSuccess;
             case 2: //Launch SignUp
-                launchSignup(currentUser);
-                break;
-
+                return launchSignup(currentUser);
             case 3: //Exit program
                 System.out.println(
                         "\t\t===============================\n" +

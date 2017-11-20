@@ -1,5 +1,6 @@
 package Start;
 
+import Dashboard.Dashboard;
 import manageTransactions.Bank;
 import manageTransactions.Portfolio;
 import manageTransactions.investInterval;
@@ -16,7 +17,10 @@ public class Start {
         Portfolio currentPortfolio = new Portfolio();
         Bank currentBank = new Bank();
         User currentUser = new User();
-        boolean loginSuccess = Login.launchLoginMenu(currentUser);
+        //boolean loginSuccess = Login.launchLoginMenu(currentUser);
+
+        while(Login.launchLoginMenu(currentUser))
+            Dashboard.launchDash(currentUser);
         //System.out.println(currentUser.getName());
         //Dashboard.launchDash(currentUser);
 

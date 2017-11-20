@@ -28,7 +28,7 @@ public class readingWrite {
                 //handle it
             }
             if(result) {
-                System.out.println("DIR created");
+                //System.out.println("DIR created");
             }
         }
         BufferedWriter bw = null;
@@ -36,7 +36,7 @@ public class readingWrite {
         try{
             File file = new File(filename);
             if (file.isFile()){
-                System.out.println("FILE EXISTS ALREADY");
+                //System.out.println("FILE EXISTS ALREADY");
                 return false;
             }
             fw = new FileWriter(file);
@@ -52,7 +52,7 @@ public class readingWrite {
                 bw.newLine();
                 bw.write(String.valueOf(user.isCorporate()));
 
-                System.out.print("userDone");
+                //System.out.print("userDone");
 
             }else if(masterInstruction.equalsIgnoreCase("portfolio")){
 
