@@ -11,7 +11,7 @@ import  java.util.*;
 
 public class readingWrite {
 
-    public static void writeFile(User user,Portfolio portfolio, String masterInstruction){
+    public static boolean writeFile(User user,Portfolio portfolio, String masterInstruction){
 
         String filename = "Storage//"+user.getEmail()+"//"+masterInstruction+".txt";
         File theDir = new File("Storage//" +user.getEmail());
@@ -21,7 +21,7 @@ public class readingWrite {
             boolean result = false;
 
             try{
-                theDir.mkdir();
+                theDir.mkdirs();
                 result = true;
             }
             catch(SecurityException se){
@@ -34,8 +34,12 @@ public class readingWrite {
         BufferedWriter bw = null;
         FileWriter fw = null;
         try{
-
-            fw = new FileWriter(filename);
+            File file = new File(filename);
+            if (file.isFile()){
+                System.out.println("FILE EXISTS ALREADY");
+                return false;
+            }
+            fw = new FileWriter(file);
             bw = new BufferedWriter(fw);
 
             if(masterInstruction.equalsIgnoreCase("user")){
@@ -89,6 +93,7 @@ public class readingWrite {
 
             }
         }
+        return true;
     }
 
     public static boolean readFile(User user, Portfolio portfolio, String masterInstruction ){
@@ -107,6 +112,7 @@ public class readingWrite {
                    user.setName(Br.readLine());
                    user.setPassword(Br.readLine());
                    user.setEmail(Br.readLine());
+                   user.setCorporate(Boolean.parseBoolean(Br.readLine()));
 
             }else if (masterInstruction.equalsIgnoreCase("portfolio")){
                   int aggression = Integer.parseInt(Br.readLine());
@@ -124,7 +130,7 @@ public class readingWrite {
         }catch (IOException e){
 
             System.out.println("something went wrong while reading ");
-            e.printStackTrace();
+            //e.printStackTrace();
             return false;
 
         }finally {
