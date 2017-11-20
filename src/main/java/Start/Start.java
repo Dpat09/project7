@@ -1,5 +1,6 @@
 package Start;
 
+import manageTransactions.Bank;
 import manageTransactions.Portfolio;
 import manageTransactions.investInterval;
 //import manageTransactions.portfolioManager;
@@ -12,17 +13,11 @@ public class Start {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-        Portfolio currentUserPortfolio = new Portfolio();
-        investInterval hello = new investInterval();
-        //hello.investAmount(currentUserPortfolio,10);
-        //currentUserPortfolio.changeAggression();
-        //portfolioManager.TestHello();
-
-        //kingsley.DisplayPortfolioOptions();
-
+        Portfolio currentPortfolio = new Portfolio();
+        Bank currentBank = new Bank();
         User currentUser = new User();
         boolean loginSuccess = Login.launchLoginMenu(currentUser);
-        System.out.println(currentUser.getName());
+        //System.out.println(currentUser.getName());
         //Dashboard.launchDash(currentUser);
 
     }
