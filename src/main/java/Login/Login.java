@@ -24,16 +24,14 @@ public class Login {
         switch (option) {
 
             case 1: //Launch Login
-                return launchLogin(currentUser) < 4;
-
+                boolean loginSuccess = launchLogin(currentUser) < 4;
+                if (!loginSuccess){
+                    System.out.println("Login attempt failed 3 times.\nPlease try again.");
+                    return loginSuccess;
+                }
+                return loginSuccess;
             case 2: //Launch SignUp
                 launchSignup(currentUser);
-//                System.out.println(
-//                        "Name: "+currentUser.getName()+
-//                        "Email: "+currentUser.getPassword()+
-//                        "Pass: "+currentUser.getPassword()
-//
-//                );
                 break;
 
             case 3: //Exit program
@@ -70,38 +68,29 @@ public class Login {
         return trigger;
     }
 
-    private static void launchSignup(User currentUser) {
-        boolean loginSuccess;
+    private static boolean launchSignup(User currentUser) {
 
-        System.out.println("\t\t========================\n" +
-                "\t\t        Sign Up!        \n" +
-                "\t\t========================\n\n");
-        System.out.println("Please enter the following information to get started!");
+        while(true) {
+            System.out.println("\t\t========================\n" +
+                    "\t\t        Sign Up!        \n" +
+                    "\t\t========================\n\n");
+            System.out.println("Please enter the following information to get started!");
+            currentUser.setName(inputInfo("Name: "));
+            currentUser.setEmail(inputInfo("Email: "));
+            currentUser.setPassword(inputInfo("Password: "));
 
-        String name = scannerInputs.scanStringInput();
-        String email = scannerInputs.scanStringInput();
-        String password = scannerInputs.scanStringInput();
-
-
-        // Add banking information and save to bank object
-        // Store Current current balance
-
-        currentUser.setName(name);
-        currentUser.setEmail(email);
-        currentUser.setPassword(password);
-        //Portfolio user = new Portfolio();
-        //user.DisplayPortfolioOptions(100.17);
-        //user.printPortfolio();
-        try {
-            PrintWriter saveUser = new PrintWriter(new FileWriter(email));
-            saveUser.println(email);
-            saveUser.println(password);
-            saveUser.println(name);
-            saveUser.close();
-        } catch (IOException e) {
-            System.out.println("error occurred while outputting user object file");
+            boolean flag = userStorage.writeFile(currentUser);
+            if (!flag){
+                System.out.println("Account already exists!");
+                String question = "Would you like to try again? \n\n1.) Yes \n2.) No \n\nEnter Choice:";
+                int input = queryHandler.optionsQuery(question,2);
+                if (input == 2)
+                    break;
+            }
+            else
+                break;
         }
-
+        return true;
     }
 
     private static String inputInfo (String title){
