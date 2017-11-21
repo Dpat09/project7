@@ -20,8 +20,6 @@ public class Login {
         String question = "1.) Login \n2.) Sign Up \n3.) Exit \n\nEnter Choice:";
         int option = queryHandler.optionsQuery(title+question,3);
 
-
-        //User test = new User("test", "123", "test@test.com");
         switch (option) {
 
             case 1: //Launch Login
@@ -45,8 +43,7 @@ public class Login {
     }
 
     private static int launchLogin(User currentUser) {
-        String email, password, name = "";
-        boolean loginSuccess;
+
         int trigger = 0;
 
         while (trigger < 4) {
@@ -55,7 +52,7 @@ public class Login {
                     "\t\t========================\n\n");
 
             currentUser.setEmail(inputInfo("Email: "));
-            password = inputInfo("Password: ");
+            String password = inputInfo("Password: ");
 
             if (userStorage.readFile(currentUser) && currentUser.getPassword().equals(password))
                 return trigger;
@@ -82,14 +79,14 @@ public class Login {
             if (!flag){
                 System.out.println("Account already exists!");
                 String question = "Would you like to try again? \n\n1.) Yes \n2.) No \n\nEnter Choice:";
-                int input = queryHandler.optionsQuery(question,2);
-                if (input == 2)
+                //int input = queryHandler.optionsQuery(question,2);
+                if (queryHandler.optionsQuery(question,2) == 2)
                     break;
             }
             else
-                break;
+                return true;
         }
-        return true;
+        return false;
     }
 
     private static String inputInfo (String title){
