@@ -4,6 +4,7 @@ package Utilities;
  * Created by Kingsley on 11/18/17.
  */
 import User.User;
+import manageTransactions.Bank;
 import manageTransactions.Portfolio;
 import java.io.*;
 import  java.lang.*;
@@ -11,13 +12,13 @@ import  java.util.*;
 
 public class readingWrite {
 
-    public static boolean writeFile(User user,Portfolio portfolio, String masterInstruction){
+    public static boolean writeFile(User user, Portfolio portfolio, Bank bank, String masterInstruction){
 
         String filename = "Storage//"+user.getEmail()+"//"+masterInstruction+".txt";
         File theDir = new File("Storage//" +user.getEmail());
 
         if (!theDir.exists()) {
-            System.out.println("creating directory: " + theDir.getName());
+            //System.out.println("creating directory: " + theDir.getName());
             boolean result = false;
 
             try{
@@ -66,13 +67,16 @@ public class readingWrite {
                 bw.newLine();
                 bw.write(String.valueOf(portfolio.getFunds()));
 
+            }else if(masterInstruction.equalsIgnoreCase("bank")){
+                bw.write(String.valueOf(bank.getBalance()));
+                bw.newLine();
+                bw.write(String.valueOf(bank.isOverDraw()));
             }else{
-                System.out.println("something went wrong");
+                //System.out.println("something went wrong");
             }
 
         }catch (IOException e){
-
-            System.out.print("something went wrong while writing ");
+            //System.out.print("something went wrong while writing ");
             e.printStackTrace();
 
         }finally {
@@ -96,7 +100,7 @@ public class readingWrite {
         return true;
     }
 
-    public static boolean readFile(User user, Portfolio portfolio, String masterInstruction ){
+    public static boolean readFile(User user, Portfolio portfolio, Bank bank, String masterInstruction ){
 
         String filename = "Storage//"+user.getEmail()+"//"+masterInstruction+".txt";
 
@@ -126,10 +130,14 @@ public class readingWrite {
                   portfolio.setInvestmentAmount(investmentAmount);
                   portfolio.setIntervalSwitch(intervalSwitch);
                   portfolio.setFunds(funds);
+
+            }else if (masterInstruction.equalsIgnoreCase("bank")){
+                  bank.updateBalance(Double.parseDouble(Br.readLine()));
+                  bank.setOverDraw(Boolean.parseBoolean(Br.readLine()));
             }
         }catch (IOException e){
 
-            System.out.println("something went wrong while reading ");
+            //System.out.println("something went wrong while reading ");
             //e.printStackTrace();
             return false;
 
@@ -150,4 +158,5 @@ public class readingWrite {
         }
         return true;
     }
+
 }
