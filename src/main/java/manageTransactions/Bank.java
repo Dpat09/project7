@@ -5,7 +5,7 @@ public class Bank implements moneyMovement{
     private boolean overDraw;
 
     public Bank(){
-        updateBalance(0);
+        updateBalance(15);
         overDraw = false;
     }
 
@@ -18,7 +18,7 @@ public class Bank implements moneyMovement{
         return this.balance;
     }
 
-    private void updateBalance(double amount){
+    public void updateBalance(double amount){
         this.balance = amount;
     }
 
@@ -38,12 +38,15 @@ public class Bank implements moneyMovement{
         updateBalance(getBalance()+amount);
     }
 
-    public void withDraw(double amount) {
-        if (getBalance() - amount > 0)
+    public boolean withDraw(double amount) {
+        if (getBalance() - amount > 0) {
             updateBalance(getBalance() - amount);
+            return true;
+        }
         else{
             setOverDraw(true);
             System.out.println("Insufficient funds!\n"+"You cannot withdraw "+amount);
+            return false;
         }
     }
 }
