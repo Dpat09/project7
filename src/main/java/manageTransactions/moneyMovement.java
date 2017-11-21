@@ -4,6 +4,6 @@ public interface moneyMovement {
 
     public void deposit(double amount);
 
-    public void withDraw(double amount);
+    public boolean withDraw(double amount);
 
 }

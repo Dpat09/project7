@@ -4,14 +4,16 @@ import Utilities.queryHandler;
 import Utilities.scannerInputs;
 
 public class Portfolio implements moneyMovement{
+
     protected int aggression; // 1 for Conservative, 2 for Moderate, 3 for Aggressive
     protected int investmentInterval;
     protected double investmentAmount;
     protected boolean intervalSwitch;
-    private double funds = 0.00;
+    private double funds;
 
     public Portfolio() {
-
+        aggression = 1;
+        funds = 0.0;
     }
 
     public Portfolio(int aggression, int investmentInterval, double investmentAmount, boolean intervalSwitch, double funds){
@@ -56,10 +58,14 @@ public class Portfolio implements moneyMovement{
         setFunds(amount+getFunds());
     }
 
-    public void withDraw(double amount) {
-        if ((getFunds() - amount) > 0)
+    public boolean withDraw(double amount) {
+        if ((getFunds() - amount) > 0) {
             setFunds((getFunds() - amount));
-        else
-            System.out.println("Insufficient funds!\n"+"You cannot withdraw "+amount);
+            return true;
+        }
+        else {
+            System.out.println("Insufficient funds!\n" + "You cannot withdraw " + amount);
+            return false;
+        }
     }
 }
