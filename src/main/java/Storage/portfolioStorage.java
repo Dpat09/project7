@@ -11,15 +11,15 @@ import manageTransactions.Portfolio;
 
 public class portfolioStorage {
 
-    public boolean writeFile(Portfolio portfolio, User user){
+    public static boolean writeFile(Portfolio portfolio, User user){
 
-        return readingWrite.writeFile(user,portfolio,"portfolio");
+        return readingWrite.writeFile(user,portfolio,null,"portfolio");
 
     }
 
-    public boolean ReadFile(Portfolio portfolio,User user){
+    public static boolean ReadFile(Portfolio portfolio,User user){
 
-        return readingWrite.readFile(user,portfolio,"portfolio");
+        return readingWrite.readFile(user,portfolio,null,"portfolio");
 
     }
 }

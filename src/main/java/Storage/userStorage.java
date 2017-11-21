@@ -10,13 +10,13 @@ public class userStorage {
 
    public static boolean writeFile( User user){
 
-      return readingWrite.writeFile(user,null,"user");
+      return readingWrite.writeFile(user,null,null,"user");
 
    }
 
    public static boolean readFile(User user){
 
-      return readingWrite.readFile(user,null,"user");
+      return readingWrite.readFile(user,null,null,"user");
 
    }
 }
