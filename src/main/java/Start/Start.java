@@ -1,10 +1,6 @@
 package Start;
 
 import Dashboard.Dashboard;
-import manageTransactions.Bank;
-import manageTransactions.Portfolio;
-import manageTransactions.investInterval;
-//import manageTransactions.portfolioManager;
 import User.User;
 import Login.Login;
 
@@ -14,16 +10,10 @@ public class Start {
     public static void main(String[]args){
         //Start Program with Splash
         //splashScreen();
-        Portfolio currentPortfolio = new Portfolio();
-        Bank currentBank = new Bank();
         User currentUser = new User();
-        //boolean loginSuccess = Login.launchLoginMenu(currentUser);
-
-        while(Login.launchLoginMenu(currentUser))
-            Dashboard.launchDash(currentUser);
-        //System.out.println(currentUser.getName());
-        //Dashboard.launchDash(currentUser);
-
+        while(true)
+            if(Login.launchLoginMenu(currentUser))
+                Dashboard.preDashSetup(currentUser);
     }
     public static void splashScreen() {
 
