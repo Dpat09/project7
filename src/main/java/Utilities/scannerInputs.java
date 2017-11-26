@@ -16,19 +16,19 @@ public class scannerInputs {
         return "";
     }
 
-    public static String scanStringInput(){
+    public static String scanString(){
         try{
             Scanner scanner = new Scanner(System.in);
             String store = scanner.nextLine();
             //scanner.close();
             return store;
         }catch (Exception e){
-            System.out.println("scanStringInput Error! \nPlease check Utilities >> scannerInputs >> scanStringInput");
+            System.out.println("scanString Error! \nPlease check Utilities >> scannerInputs >> scanString");
         }
         return "";
     }
 
-    public static int scanIntegerInput(){
+    public static int scanInteger(){
         try{
             Scanner intScanner = new Scanner(System.in);
             int store = intScanner.nextInt();
@@ -36,19 +36,19 @@ public class scannerInputs {
             return store;
         }catch (Exception e){
             System.out.println(e);
-            System.out.println("scanIntegerInput Error! \nPlease check Utilities >> scannerInputs >> scanIntegerInput");
+            System.out.println("scanInteger Error! \nPlease check Utilities >> scannerInputs >> scanInteger");
         }
         return 0;
     }
 
-    public static double scanDoubleInput(){
+    public static double scanDouble(){
         try{
             Scanner doubleScanner = new Scanner(System.in);
             double store = doubleScanner.nextDouble();
             //doubleScanner.close();
             return store;
         }catch (Exception e){
-            System.out.println("scanDoubleInput Error! \nPlease check Utilities >> scannerInputs >> scanDoubleInput");
+            System.out.println("scanDouble Error! \nPlease check Utilities >> scannerInputs >> scanDouble");
         }
         return 0;
     }
