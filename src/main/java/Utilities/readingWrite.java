@@ -71,6 +71,8 @@ public class readingWrite {
                 bw.write(String.valueOf(bank.getBalance()));
                 bw.newLine();
                 bw.write(String.valueOf(bank.isOverDraw()));
+            }else if(masterInstruction.equalsIgnoreCase("stock")){
+                System.out.println("Stock information saved here.");
             }else{
                 //System.out.println("something went wrong");
             }
