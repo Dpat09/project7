@@ -48,12 +48,6 @@ public class Portfolio implements moneyMovement{
         this.funds = funds;
     }
 
-    public void changeAggression(){
-        String question = "Set aggression on portfolio: \n\n1.) Conservative \n2.) Moderate \n3.) Aggressive \n4.) Cancel \n\nEnter Choice:";
-        int input = queryHandler.optionsQuery(question,4);
-        aggression = input != 4 ? input : aggression;
-    }
-
     public void deposit(double amount) {
         setFunds(amount+getFunds());
     }
