@@ -3,7 +3,6 @@ package Reoccur;
 import Utilities.*;
 import manageTransactions.Portfolio;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Reoccur extends Portfolio {
@@ -20,25 +19,15 @@ public class Reoccur extends Portfolio {
         int input = queryHandler.optionsQuery(question,4);
         if (input!=4){
             investmentInterval = input;
-            setSwitch();
+            //setSwitch();
         }
     }
-
-//    public void setReoccuringNEW(){
-//        System.out.print("Pick an investment interval:\n 1. Daily \n 2. Weekly \n 3. Monthly\n Enter Choice: ");
-//        int choice = 0;
-//        scannerInputs.scanIntegerInput(choice);
-//        //scannerInputs.scanStringInput(investmentInterval);
-//        while(true){
-//
-//        }
-//    }
 
     void investAmount(){
         System.out.println("Set investment amount (Amount > $1 only): ");
 //        Scanner scanner = new Scanner(System.in);
 //        investmentAmount = scanner.nextInt();
-        investmentAmount = scannerInputs.scanDoubleInput();
+        investmentAmount = scannerInputs.scanDouble();
         if (investmentAmount < 1){
             investAmount();
         }

@@ -8,12 +8,15 @@ import java.util.Scanner;
 
 public class Start {
     public static void main(String[]args){
-        //Start Program with Splash
-        //splashScreen();
-        User currentUser = new User();
-        while(true)
-            if(Login.launchLoginMenu(currentUser))
-                Dashboard.preDashSetup(currentUser);
+        while(true){
+            //Start Program with Splash
+            splashScreen();
+            User currentUser = new User();
+            if(Login.launchLoginMenu(currentUser)) {
+                Dashboard dash = new Dashboard(currentUser);
+                dash.preDashSetup(currentUser);
+            }
+        }
     }
     public static void splashScreen() {
 
@@ -37,8 +40,8 @@ public class Start {
 //                "`\"8bbdP\"Y8  `\"Ybbd8\"'  `\"YbbdP\"'  88         88       88  \n" +
 //                "                                                          \n" +
 //                "                                                          ");
-        Scanner next = new Scanner(System.in);
-        System.out.println("Please hit any key to continue..");
-        String hold = next.nextLine();
+//        Scanner next = new Scanner(System.in);
+//        System.out.println("Please hit any key to continue..");
+//        String hold = next.nextLine();
     }
 }

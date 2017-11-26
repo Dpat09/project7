@@ -2,13 +2,7 @@ package Login;
 
 import Storage.userStorage;
 import User.User;
-import Utilities.queryHandler;
-import Utilities.scannerInputs;
-
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import static Utilities.queryHandler.*;
 
 public class Login {
     public static boolean launchLoginMenu(User currentUser) {
@@ -18,7 +12,7 @@ public class Login {
                 "\t\t========================\n";
 
         String question = "1.) Login \n2.) Sign Up \n3.) Exit \n\nEnter Choice:";
-        int option = queryHandler.optionsQuery(title+question,3);
+        int option = optionsQuery(title+question,3);
 
         switch (option) {
 
@@ -80,17 +74,12 @@ public class Login {
                 System.out.println("Account already exists!");
                 String question = "Would you like to try again? \n\n1.) Yes \n2.) No \n\nEnter Choice:";
                 //int input = queryHandler.optionsQuery(question,2);
-                if (queryHandler.optionsQuery(question,2) == 2)
+                if (optionsQuery(question,2) == 2)
                     break;
             }
             else
                 return true;
         }
         return false;
-    }
-
-    private static String inputInfo (String title){
-        System.out.print(title);
-        return scannerInputs.scanStringInput();
     }
 }
