@@ -3,14 +3,17 @@ package manageTransactions;
 public class Bank implements moneyMovement{
     private double balance;
     private boolean overDraw;
+    private boolean isCorporate = false;
 
     public Bank(){
         updateBalance(15);
+        checkCorporate();
         overDraw = false;
     }
 
     public Bank(double amount, boolean flag){
         updateBalance(amount);
+        checkCorporate();
         setOverDraw(flag);
     }
 
@@ -38,6 +41,8 @@ public class Bank implements moneyMovement{
         updateBalance(getBalance()+amount);
     }
 
+    public boolean getCorporate() { return this.isCorporate; }
+
     public boolean withDraw(double amount) {
         if (getBalance() - amount > 0) {
             updateBalance(getBalance() - amount);
@@ -47,6 +52,15 @@ public class Bank implements moneyMovement{
             setOverDraw(true);
             System.out.println("Insufficient funds!\n"+"You cannot withdraw "+amount);
             return false;
+        }
+    }
+
+    public void checkCorporate(){
+        if (getBalance() >= 80000){
+            System.out.println("Account updated: Corporate User");
+            isCorporate = true; }
+        else {
+            System.out.println("Account updated: Personal User");
         }
     }
 }
