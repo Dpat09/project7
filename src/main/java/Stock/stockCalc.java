@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public class stockCalc {
+    double originalAmount = 0.0;
+    double newAmount = 0.0;
+    BigDecimal investment;
+
     public void investmentCalc(Portfolio portfolio) throws IOException {
         int aggression = portfolio.getAggression();
         if (aggression == 1){
@@ -19,7 +23,6 @@ public class stockCalc {
             BigDecimal poBusch = Busch.getQuote(true).getPrice();
             BigDecimal poBankOfAmerica = BankOfAmerica.getQuote(true).getPrice();
             BigDecimal poJohnsonJohnson = JohnsonJohnson.getQuote(true).getPrice();
-
         }
         else if (aggression == 2){
             Stock CVS = YahooFinance.get("CVS");
@@ -39,5 +42,9 @@ public class stockCalc {
             BigDecimal poScientificGames = ScientificGames.getQuote(true).getPrice();
             BigDecimal poSuperValueGames = SuperValueGrocery.getQuote(true).getPrice();
         }
+    }
+    public double calChange(double originalAmount, double newAmount) {
+        if (originalAmount == 0) { return 0; }
+        else { return ((newAmount - originalAmount) / originalAmount); }
     }
 }
