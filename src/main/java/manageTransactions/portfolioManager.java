@@ -37,7 +37,6 @@ public class portfolioManager extends transactionBridge {
 
         changeAggression(portObj);
         stockCalc.setStocks(portObj,stockObj);
-
         addFunds(portObj,bankObj);
 
         return portObj;

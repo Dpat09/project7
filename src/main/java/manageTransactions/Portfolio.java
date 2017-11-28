@@ -53,7 +53,7 @@ public class Portfolio implements moneyMovement{
     }
 
     public boolean withDraw(double amount) {
-        if ((getFunds() - amount) > 0) {
+        if ((getFunds() - amount) >= 0) {
             setFunds((getFunds() - amount));
             return true;
         }
