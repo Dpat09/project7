@@ -1,6 +1,7 @@
 package Dashboard;
 
 import Stock.stockCalc;
+import Stock.stockStore;
 import Storage.bankStorage;
 import Storage.portfolioStorage;
 import Storage.userStorage;
@@ -17,14 +18,17 @@ public class Dashboard {
     private static Portfolio currentPortfolio = null;
     private static Bank currentBank = null;
     private stockCalc calc = null;
+    private static stockStore stocksList = null;
 
     public Dashboard(User currentUser){
         currentPortfolio = new Portfolio();
         currentBank = new Bank();
         calc = new stockCalc();
+        stocksList = new stockStore();
     }
 
     public void preDashSetup(User currentUser) {
+
         bankStorage.readFile(currentBank,currentUser);
         if (!portfolioStorage.ReadFile(currentPortfolio, currentUser))
             portfolioManager.createPortfolio(currentPortfolio, currentBank);
@@ -46,6 +50,7 @@ public class Dashboard {
             System.out.print("Your present account value is $");
             System.out.printf("%.2f\n", currentPortfolio.getFunds());
 
+            //testing
             try{
                 calc.investmentCalc(currentPortfolio);
             }catch(Exception e){
