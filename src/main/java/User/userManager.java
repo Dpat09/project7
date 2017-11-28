@@ -15,7 +15,11 @@ public class userManager {
         while (input !=2){
             input = optionsQuery(title+question,2);
             switch (input){
-                case 1:changeUserPass(currentUser);
+                case 1:
+                    changeUserPass(currentUser);
+                    break;
+                case 2:
+                    break;
             }
         }
     }
