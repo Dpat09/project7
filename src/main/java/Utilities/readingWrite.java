@@ -3,6 +3,11 @@ package Utilities;
 /**
  * Created by Kingsley on 11/18/17.
  */
+
+// While loop to iterate through a HashMap is implementing the logic from this link from github:
+// https://stackoverflow.com/questions/1066589/iterate-through-a-hashmap#1066607
+
+import Stock.stockStore;
 import User.User;
 import manageTransactions.Bank;
 import manageTransactions.Portfolio;
@@ -12,7 +17,7 @@ import  java.util.*;
 
 public class readingWrite {
 
-    public static boolean writeFile(User user, Portfolio portfolio, Bank bank, String masterInstruction){
+    public static boolean writeFile(User user, Portfolio portfolio, Bank bank, stockStore stocksList, String masterInstruction){
 
         String filename = "Storage//"+user.getEmail()+"//"+masterInstruction+".txt";
         File theDir = new File("Storage//" +user.getEmail());
@@ -75,6 +80,14 @@ public class readingWrite {
                 bw.write(String.valueOf(bank.getCorporate()));
             }else if(masterInstruction.equalsIgnoreCase("stock")){
                 System.out.println("Stock information saved here.");
+                Iterator i = stocksList.getMap().entrySet().iterator();
+                while (i.hasNext()){
+                    Map.Entry pairs = (Map.Entry)i.next();
+                    bw.write(String.valueOf(pairs.getKey()));
+                    bw.newLine();
+                    bw.write(String.valueOf(pairs.getValue()));
+                    i.remove();
+                }
             }else{
                 //System.out.println("something went wrong");
             }
@@ -104,7 +117,7 @@ public class readingWrite {
         return true;
     }
 
-    public static boolean readFile(User user, Portfolio portfolio, Bank bank, String masterInstruction ){
+    public static boolean readFile(User user, Portfolio portfolio, Bank bank, stockStore stocksList, String masterInstruction ){
 
         String filename = "Storage//"+user.getEmail()+"//"+masterInstruction+".txt";
 
@@ -138,6 +151,12 @@ public class readingWrite {
             }else if (masterInstruction.equalsIgnoreCase("bank")){
                   bank.updateBalance(Double.parseDouble(Br.readLine()));
                   bank.setOverDraw(Boolean.parseBoolean(Br.readLine()));
+            }
+            else if (masterInstruction.equalsIgnoreCase("stock")){
+                System.out.println("READING Stocks");
+                stocksList.setInitPrice(Br.readLine(),Double.parseDouble(Br.readLine()));
+                stocksList.setInitPrice(Br.readLine(),Double.parseDouble(Br.readLine()));
+                stocksList.setInitPrice(Br.readLine(),Double.parseDouble(Br.readLine()));
             }
         }catch (IOException e){
 

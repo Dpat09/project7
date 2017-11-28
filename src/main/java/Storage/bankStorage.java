@@ -8,13 +8,13 @@ import manageTransactions.Portfolio;
 public class bankStorage {
     public static boolean writeFile(Bank bank, User user){
 
-        return readingWrite.writeFile(user,null,bank,"bank");
+        return readingWrite.writeFile(user,null,bank,null,"bank");
 
     }
 
     public static boolean readFile(Bank bank,User user){
 
-        return readingWrite.readFile(user,null,bank,"bank");
+        return readingWrite.readFile(user,null,bank,null,"bank");
 
     }
 }

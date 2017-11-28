@@ -4,6 +4,7 @@ import Stock.stockCalc;
 import Stock.stockStore;
 import Storage.bankStorage;
 import Storage.portfolioStorage;
+import Storage.stockStorage;
 import Storage.userStorage;
 import User.*;
 import static Utilities.queryHandler.*;
@@ -28,7 +29,7 @@ public class Dashboard {
     }
 
     public void preDashSetup(User currentUser) {
-
+        stockStorage.readFile(stocksList,currentUser);
         bankStorage.readFile(currentBank,currentUser);
         if (!portfolioStorage.ReadFile(currentPortfolio, currentUser))
             portfolioManager.createPortfolio(currentPortfolio, currentBank);
@@ -38,6 +39,7 @@ public class Dashboard {
         userStorage.writeFile(currentUser);
         portfolioStorage.writeFile(currentPortfolio, currentUser);
         bankStorage.writeFile(currentBank, currentUser);
+        stockStorage.writeFile(stocksList,currentUser);
     }
 
     public void launchDash(User currentUser) {
