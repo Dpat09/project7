@@ -13,38 +13,27 @@ public class stockCalc {
         int aggression = portfolio.getAggression();
         double funds = portfolio.getFunds();
         if (aggression == 1){
-            Stock Busch = YahooFinance.get("BUD");
-            Stock BankOfAmerica = YahooFinance.get("BAC");
-            Stock JohnsonJohnson = YahooFinance.get("JNJ");
+            double poBusch = stockPuller.stockPull("BUD");
+            double poBankOfAmerica = stockPuller.stockPull("BAC");
+            double poJohnsonJohnson = stockPuller.stockPull("JNJ");
 
-            double poBusch = Busch.getQuote(true).getPrice().doubleValue();
-            double poBankOfAmerica = BankOfAmerica.getQuote(true).getPrice().doubleValue();
-            double poJohnsonJohnson = JohnsonJohnson.getQuote(true).getPrice().doubleValue();
-
-            funds = funds * (.333);
+            funds = funds / 3;
+            System.out.println("funds is: " + funds);
             portfolioWorth = poBusch * (funds) + poBankOfAmerica * (funds) + poJohnsonJohnson * (funds);
             System.out.println("Value of portfolio worth is: " + portfolioWorth);
         }
         else if (aggression == 2){
-            Stock CVS = YahooFinance.get("CVS");
-            Stock Walgreens = YahooFinance.get("WBA");
-            Stock Walmart = YahooFinance.get("WMT");
-
-            double poCVS = CVS.getQuote(true).getPrice().doubleValue();
-            double poWalgreens = Walgreens.getQuote(true).getPrice().doubleValue();
-            double poWalmart = Walmart.getQuote(true).getPrice().doubleValue();
+            double poCVS = stockPuller.stockPull("CVS");
+            double poWalgreens = stockPuller.stockPull("WBA");
+            double poWalmart = stockPuller.stockPull("WMT");
 
             funds = funds / .33;
             portfolioWorth = poCVS * (funds) + poWalgreens * (funds) + poWalmart * (funds);
         }
         else if (aggression == 3){
-            Stock TEVA = YahooFinance.get("TEVA");
-            Stock ScientificGames = YahooFinance.get("SGMS");
-            Stock SuperValueGrocery = YahooFinance.get("SVU");
-
-            double poTEVA = TEVA.getQuote(true).getPrice().doubleValue();
-            double poScientificGames = ScientificGames.getQuote(true).getPrice().doubleValue();
-            double poSuperValueGames = SuperValueGrocery.getQuote(true).getPrice().doubleValue();
+            double poTEVA = stockPuller.stockPull("TEVA");
+            double poScientificGames = stockPuller.stockPull("SGMS");
+            double poSuperValueGames = stockPuller.stockPull("SVU");
 
             funds = funds / .33;
             portfolioWorth = poTEVA * (funds) + poScientificGames * (funds) + poSuperValueGames * (funds);
