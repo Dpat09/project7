@@ -146,14 +146,14 @@ public class readingWrite {
 
             }else if (masterInstruction.equalsIgnoreCase("portfolio")){
                   int aggression = Integer.parseInt(Br.readLine());
-                  int investInterval = Integer.parseInt(Br.readLine());
-                  double investmentAmount = Double.parseDouble(Br.readLine());
+                  double preInvested = Double.parseDouble(Br.readLine());
+                  double overallGrowth = Double.parseDouble(Br.readLine());
                   boolean intervalSwitch = Boolean.parseBoolean(Br.readLine());
                   double funds = Double.parseDouble(Br.readLine());
 
                   portfolio.setAggression(aggression);
-                  portfolio.setPreInvested(investInterval);
-                  portfolio.setOverallGrowth(investmentAmount);
+                  portfolio.setPreInvested(preInvested);
+                  portfolio.setOverallGrowth(overallGrowth);
                   portfolio.setIntervalSwitch(intervalSwitch);
                   portfolio.setFunds(funds);
 
