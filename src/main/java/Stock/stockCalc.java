@@ -19,12 +19,19 @@ public class stockCalc {
             changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("JNJ"),"JNJ");
 
             overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
+
+            portfolio.setOverallGrowth(overallGrowth);
+            stockList.setChangeOfStock(changeOfStock1);
+            stockList.setChangeOfStock(changeOfStock2);
+            stockList.setChangeOfStock(changeOfStock3);
+
             System.out.println("Overall Growth: " + overallGrowth);
             System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
 
             System.out.printf("Percentage growth of Busch: %.3f\n", changeOfStock1);
             System.out.printf("Percentage growth of Bank Of America: %.3f\n", changeOfStock2);
             System.out.printf("Percentage growth of Johnson and Johnson: %.3f\n", changeOfStock3);
+
         }
         else if (aggression == 2){
             changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("CVS"),"CVS");
@@ -55,7 +62,7 @@ public class stockCalc {
     }
 
     private double changeInPercent(stockStore stockList, double newStock, String oldStock){
-        return (newStock - stockList.getInitPrice(oldStock)) / stockList.getInitPrice(oldStock)*100;
+        return (newStock - stockList.getInitPrice(oldStock)) / stockList.getInitPrice(oldStock);
     }
 
     public static void setStocks(Portfolio portfolio, stockStore stocksList){

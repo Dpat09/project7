@@ -22,7 +22,11 @@ public class portfolioManager extends transactionBridge {
             input = queryHandler.optionsQuery(title + question, 4);
             switch(input){
                 case 1://Do something
+                    
+                    break;
                 case 2://Do something
+
+                    break;
                 case 3://Do something
                     changeAggression(portObj);
                     break;

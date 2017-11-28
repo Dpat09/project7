@@ -1,13 +1,10 @@
 package manageTransactions;
 
-import Utilities.queryHandler;
-import Utilities.scannerInputs;
-
 public class Portfolio implements moneyMovement{
 
     protected int aggression; // 1 for Conservative, 2 for Moderate, 3 for Aggressive
-    protected int investmentInterval;
-    protected double investmentAmount;
+    protected double preInvested;
+    protected double overallGrowth;
     protected boolean intervalSwitch;
     private double funds;
 
@@ -16,10 +13,10 @@ public class Portfolio implements moneyMovement{
         funds = 0.0;
     }
 
-    public Portfolio(int aggression, int investmentInterval, double investmentAmount, boolean intervalSwitch, double funds){
+    public Portfolio(int aggression, int preInvested, double overallGrowth, boolean intervalSwitch, double funds){
         setAggression(aggression);
-        setInvestmentInterval(investmentInterval);
-        setInvestmentAmount(investmentAmount);
+        setPreInvested(preInvested);
+        setOverallGrowth(overallGrowth);
         setIntervalSwitch(intervalSwitch);
         setFunds(funds);
     }
@@ -28,18 +25,18 @@ public class Portfolio implements moneyMovement{
         return this.funds;
     }
     public boolean getIntervalSwitch(){return this.intervalSwitch;}
-    public double getInvestmentAmount(){return this.investmentAmount;}
-    public int getInvestmentInterval(){return this.investmentInterval;}
+    public double getOverallGrowth(){return this.overallGrowth;}
+    public double getPreInvested(){return this.preInvested;}
     public int getAggression(){return this.aggression;}
 
     public void setAggression(int aggression){
         this.aggression = aggression;
     }
-    public void setInvestmentInterval(int investmentInterval){
-        this.investmentInterval = investmentInterval;
+    public void setPreInvested(double preInvested){
+        this.preInvested = preInvested;
     }
-    public void setInvestmentAmount(double investmentAmount){
-        this.investmentAmount = investmentAmount;
+    public void setOverallGrowth(double overallGrowth){
+        this.overallGrowth = overallGrowth;
     }
     public void setIntervalSwitch(boolean intervalSwitch){
         this.intervalSwitch = intervalSwitch;
@@ -50,6 +47,7 @@ public class Portfolio implements moneyMovement{
 
     public void deposit(double amount) {
         setFunds(amount+getFunds());
+        setPreInvested(amount+getPreInvested());
     }
 
     public boolean withDraw(double amount) {
