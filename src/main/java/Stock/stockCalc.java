@@ -44,23 +44,27 @@ public class stockCalc {
         else { return ((newAmount - originalAmount) / originalAmount); }
     }
 
-    public static void setStocks(Portfolio portfolio, stockStore stocksList) throws IOException{
-        switch(portfolio.getAggression()){
-            case 1:
-                stocksList.setInitPrice("BUD",stockPuller.stockPull("BUD"));
-                stocksList.setInitPrice("BAC",stockPuller.stockPull("BAC"));
-                stocksList.setInitPrice("JNJ",stockPuller.stockPull("JNJ"));
-                break;
-            case 2:
-                stocksList.setInitPrice("CVS",stockPuller.stockPull("CVS"));
-                stocksList.setInitPrice("WBA",stockPuller.stockPull("WBA"));
-                stocksList.setInitPrice("WMT",stockPuller.stockPull("WMT"));
-                break;
-            case 3:
-                stocksList.setInitPrice("TEVA",stockPuller.stockPull("TEVA"));
-                stocksList.setInitPrice("SGMS",stockPuller.stockPull("SGMS"));
-                stocksList.setInitPrice("SVU",stockPuller.stockPull("SVU"));
-                break;
+    public static void setStocks(Portfolio portfolio, stockStore stocksList){
+        try {
+            switch (portfolio.getAggression()) {
+                case 1:
+                    stocksList.setInitPrice("BUD", stockPuller.stockPull("BUD"));
+                    stocksList.setInitPrice("BAC", stockPuller.stockPull("BAC"));
+                    stocksList.setInitPrice("JNJ", stockPuller.stockPull("JNJ"));
+                    break;
+                case 2:
+                    stocksList.setInitPrice("CVS", stockPuller.stockPull("CVS"));
+                    stocksList.setInitPrice("WBA", stockPuller.stockPull("WBA"));
+                    stocksList.setInitPrice("WMT", stockPuller.stockPull("WMT"));
+                    break;
+                case 3:
+                    stocksList.setInitPrice("TEVA", stockPuller.stockPull("TEVA"));
+                    stocksList.setInitPrice("SGMS", stockPuller.stockPull("SGMS"));
+                    stocksList.setInitPrice("SVU", stockPuller.stockPull("SVU"));
+                    break;
+            }
+        }catch(Exception e){
+            System.out.println("Something broke at setStocks under Stock.stockCalc");
         }
     }
 }
