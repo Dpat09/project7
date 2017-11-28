@@ -10,21 +10,18 @@ public class stockCalc {
         int aggression = portfolio.getAggression();
         double funds = portfolio.getFunds();
         double fundsDistributed = funds / 3;
-        double changeOfStock1;
-        double  changeOfStock2;
-        double changeOfStock3;
+        Double changeOfStock1;
+        Double  changeOfStock2;
+        Double changeOfStock3;
         if (aggression == 1){
-            double poBusch = stockPuller.stockPull("BUD");
-            double poBankOfAmerica = stockPuller.stockPull("BAC");
-            double poJohnsonJohnson = stockPuller.stockPull("JNJ");
 
-            changeOfStock1 = poBusch - stockList.getInitPrice("BUD") / stockList.getInitPrice("BUD");
-            changeOfStock2 = poBankOfAmerica - stockList.getInitPrice("BAC") / stockList.getInitPrice("BAC");
-            changeOfStock3 = poJohnsonJohnson - stockList.getInitPrice("JNJ") / stockList.getInitPrice("JNJ");
+            changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("BUD"),"BUD");
+            changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("BAC"),"BAC");
+            changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("JNJ"),"JNJ");
 
-            System.out.println("Percentage growth of Busch: %" + changeOfStock1);
-            System.out.println("Percentage growth of Bank Of America: %" + changeOfStock2);
-            System.out.println("Percentage growth of Johnson and Johnson: %" + changeOfStock3);
+            System.out.printf("Percentage growth of Busch: %.3f\n", changeOfStock1);
+            System.out.printf("Percentage growth of Bank Of America: %.3f\n", changeOfStock2);
+            System.out.printf("Percentage growth of Johnson and Johnson: %.3f\n", changeOfStock3);
         }
         else if (aggression == 2){
             double poCVS = stockPuller.stockPull("CVS");
@@ -35,9 +32,11 @@ public class stockCalc {
             changeOfStock2 = poWalgreens - stockList.getInitPrice("WBA") / stockList.getInitPrice("WBA");
             changeOfStock3 = poWalmart - stockList.getInitPrice("WMT") / stockList.getInitPrice("WMT");
 
-            System.out.println("Percentage growth of CVS: %" + changeOfStock1);
-            System.out.println("Percentage growth of Walgreens: %" + changeOfStock2);
-            System.out.println("Percentage growth of Walmart: %" + changeOfStock3);
+
+
+            System.out.println("Percentage growth of CVS: %" + changeOfStock1/100);
+            System.out.println("Percentage growth of Walgreens: %" + changeOfStock2/100);
+            System.out.println("Percentage growth of Walmart: %" + changeOfStock3/100);
         }
         else if (aggression == 3){
             double poTEVA = stockPuller.stockPull("TEVA");
@@ -52,6 +51,10 @@ public class stockCalc {
             System.out.println("Percentage growth of Scientific Games: %" + changeOfStock2);
             System.out.println("Percentage growth of Super Value Games: %" + changeOfStock3);
         }
+    }
+
+    private double changeInPercent(stockStore stockList, double newStock, String oldStock){
+        return (newStock - stockList.getInitPrice(oldStock)) / stockList.getInitPrice(oldStock)*100;
     }
 
     public static void setStocks(Portfolio portfolio, stockStore stocksList){
