@@ -63,7 +63,7 @@ public class Dashboard {
 
             //testing
             try{
-                calc.investmentCalc(currentPortfolio);
+                calc.investmentCalc(currentPortfolio,stocksList);
             }catch(Exception e){
                 System.out.println("hello");
             }
