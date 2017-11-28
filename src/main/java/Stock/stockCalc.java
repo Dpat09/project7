@@ -20,27 +20,27 @@ public class stockCalc {
             Stock BankOfAmerica = YahooFinance.get("BAC");
             Stock JohnsonJohnson = YahooFinance.get("JNJ");
 
-            BigDecimal poBusch = Busch.getQuote(true).getPrice();
-            BigDecimal poBankOfAmerica = BankOfAmerica.getQuote(true).getPrice();
-            BigDecimal poJohnsonJohnson = JohnsonJohnson.getQuote(true).getPrice();
+            double poBusch = Busch.getQuote(true).getPrice().doubleValue();
+            double poBankOfAmerica = BankOfAmerica.getQuote(true).getPrice().doubleValue();
+            double poJohnsonJohnson = JohnsonJohnson.getQuote(true).getPrice().doubleValue();
         }
         else if (aggression == 2){
             Stock CVS = YahooFinance.get("CVS");
             Stock Walgreens = YahooFinance.get("WBA");
             Stock Walmart = YahooFinance.get("WMT");
 
-            BigDecimal poCVS = CVS.getQuote(true).getPrice();
-            BigDecimal poWalgreens = Walgreens.getQuote(true).getPrice();
-            BigDecimal poWalmart = Walmart.getQuote(true).getPrice();
+            double poCVS = CVS.getQuote(true).getPrice().doubleValue();
+            double poWalgreens = Walgreens.getQuote(true).getPrice().doubleValue();
+            double poWalmart = Walmart.getQuote(true).getPrice().doubleValue();
         }
         else if (aggression == 3){
             Stock TEVA = YahooFinance.get("TEVA");
             Stock ScientificGames = YahooFinance.get("SGMS");
             Stock SuperValueGrocery = YahooFinance.get("SVU");
 
-            BigDecimal poTEVA = TEVA.getQuote(true).getPrice();
-            BigDecimal poScientificGames = ScientificGames.getQuote(true).getPrice();
-            BigDecimal poSuperValueGames = SuperValueGrocery.getQuote(true).getPrice();
+            double poTEVA = TEVA.getQuote(true).getPrice().doubleValue();
+            double poScientificGames = ScientificGames.getQuote(true).getPrice().doubleValue();
+            double poSuperValueGames = SuperValueGrocery.getQuote(true).getPrice().doubleValue();
         }
     }
     public double calChange(double originalAmount, double newAmount) {
