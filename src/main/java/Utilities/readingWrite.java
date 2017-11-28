@@ -14,7 +14,6 @@ import manageTransactions.Bank;
 import manageTransactions.Portfolio;
 import java.io.*;
 import  java.lang.*;
-import  java.util.*;
 
 public class readingWrite {
 
@@ -65,9 +64,9 @@ public class readingWrite {
 
                 bw.write(String.valueOf(portfolio.getAggression()));
                 bw.newLine();
-                bw.write(String.valueOf(portfolio.getInvestmentInterval()));
+                bw.write(String.valueOf(portfolio.getPreInvested()));
                 bw.newLine();
-                bw.write(String.valueOf(portfolio.getInvestmentAmount()));
+                bw.write(String.valueOf(portfolio.getOverallGrowth()));
                 bw.newLine();
                 bw.write(String.valueOf(portfolio.getIntervalSwitch()));
                 bw.newLine();
@@ -153,8 +152,8 @@ public class readingWrite {
                   double funds = Double.parseDouble(Br.readLine());
 
                   portfolio.setAggression(aggression);
-                  portfolio.setInvestmentInterval(investInterval);
-                  portfolio.setInvestmentAmount(investmentAmount);
+                  portfolio.setPreInvested(investInterval);
+                  portfolio.setOverallGrowth(investmentAmount);
                   portfolio.setIntervalSwitch(intervalSwitch);
                   portfolio.setFunds(funds);
 

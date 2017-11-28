@@ -68,15 +68,14 @@ public class Dashboard {
                 System.out.println("hello");
             }
 
-            String questionPart1 = "What would you like to do today?\n"
+            String question = "What would you like to do today?\n"
                     + "\n1.) Manage User Account"
-                    + "\n2.) Manage Portfolio" +
-                        "\n\t-Pick different Aggressions"
+                    + "\n2.) See Portfolio"
                     + "\n3.) Manage Funds"
                     + "\n4.) Logoff"
                     + "\n\nEnter Choice:";
 
-            option = optionsQuery(questionPart1,4);
+            option = optionsQuery(question,4);
 
             switch(option){
                 case 1:
