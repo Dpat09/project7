@@ -52,6 +52,15 @@ public class Dashboard {
             System.out.print("Your present account value is $");
             System.out.printf("%.2f\n", currentPortfolio.getFunds());
 
+            //EXAMPLES OF USAGE OF stocksList
+            stocksList.setInitPrice("INTL",35);
+            stocksList.setInitPrice("HELLO", 100);
+            stocksList.setInitPrice("GOOG", 1019);
+
+            System.out.println(stocksList.getInitPrice("INTL"));
+            System.out.println(stocksList.getInitPrice("HELLO"));
+            System.out.println(stocksList.getInitPrice("GOOG"));
+
             //testing
             try{
                 calc.investmentCalc(currentPortfolio);
