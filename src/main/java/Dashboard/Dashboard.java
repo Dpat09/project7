@@ -32,7 +32,7 @@ public class Dashboard {
         stockStorage.readFile(stocksList,currentUser);
         bankStorage.readFile(currentBank,currentUser);
         if (!portfolioStorage.ReadFile(currentPortfolio, currentUser))
-            portfolioManager.createPortfolio(currentPortfolio, currentBank);
+            portfolioManager.createPortfolio(currentPortfolio, currentBank, stocksList);
 
         launchDash(currentUser);
 
@@ -53,13 +53,13 @@ public class Dashboard {
             System.out.printf("%.2f\n", currentPortfolio.getFunds());
 
             //EXAMPLES OF USAGE OF stocksList
-            stocksList.setInitPrice("INTL",35);
-            stocksList.setInitPrice("HELLO", 100);
-            stocksList.setInitPrice("GOOG", 1019);
-
-            System.out.println(stocksList.getInitPrice("INTL"));
-            System.out.println(stocksList.getInitPrice("HELLO"));
-            System.out.println(stocksList.getInitPrice("GOOG"));
+//            stocksList.setInitPrice("INTL",35);
+//            stocksList.setInitPrice("HELLO", 100);
+//            stocksList.setInitPrice("GOOG", 1019);
+//
+//            System.out.println(stocksList.getInitPrice("INTL"));
+//            System.out.println(stocksList.getInitPrice("HELLO"));
+//            System.out.println(stocksList.getInitPrice("GOOG"));
 
             //testing
             try{

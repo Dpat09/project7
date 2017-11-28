@@ -6,6 +6,7 @@ package Utilities;
 
 // While loop to iterate through a HashMap is implementing the logic from this link from github:
 // https://stackoverflow.com/questions/1066589/iterate-through-a-hashmap#1066607
+// https://stackoverflow.com/questions/5920135/printing-hashmap-in-java#5920157
 
 import Stock.stockStore;
 import User.User;
@@ -80,13 +81,22 @@ public class readingWrite {
                 bw.write(String.valueOf(bank.getCorporate()));
             }else if(masterInstruction.equalsIgnoreCase("stock")){
                 System.out.println("Stock information saved here.");
-                Iterator i = stocksList.getMap().entrySet().iterator();
-                while (i.hasNext()){
-                    Map.Entry pairs = (Map.Entry)i.next();
-                    bw.write(String.valueOf(pairs.getKey()));
+//                Iterator i = stocksList.getMap().entrySet().iterator();
+//                while (i.hasNext()){
+//                    Map.Entry pairs = (Map.Entry)i.next();
+//                    bw.write(String.valueOf(pairs.getKey()));
+//                    bw.newLine();
+//                    bw.write(String.valueOf(pairs.getValue()));
+//                    i.remove();
+//                }
+                for(String key: stocksList.getMap().keySet()){
+//                    String k = key.toString();
+//                    String val = stocksList.getMap().get(key).toString();
+//                    System.out.println(k+ " = "+val);
+                    bw.write(String.valueOf(key));
                     bw.newLine();
-                    bw.write(String.valueOf(pairs.getValue()));
-                    i.remove();
+                    bw.write(String.valueOf(stocksList.getMap().get(key)));
+                    bw.newLine();
                 }
             }else{
                 //System.out.println("something went wrong");

@@ -5,9 +5,9 @@ import yahoofinance.*;
 import java.io.IOException;
 
 public class stockCalc {
-    double originalAmount = 0.0;
-    double newAmount = 0.0;
-    double portfolioWorth = 0.0;
+    private double originalAmount = 0.0;
+    private double newAmount = 0.0;
+    private double portfolioWorth = 0.0;
 
     public void investmentCalc(Portfolio portfolio) throws IOException {
         int aggression = portfolio.getAggression();
@@ -42,5 +42,25 @@ public class stockCalc {
     public double calChange(double originalAmount, double newAmount) {
         if (originalAmount == 0) { return 0; }
         else { return ((newAmount - originalAmount) / originalAmount); }
+    }
+
+    public static void setStocks(Portfolio portfolio, stockStore stocksList) throws IOException{
+        switch(portfolio.getAggression()){
+            case 1:
+                stocksList.setInitPrice("BUD",stockPuller.stockPull("BUD"));
+                stocksList.setInitPrice("BAC",stockPuller.stockPull("BAC"));
+                stocksList.setInitPrice("JNJ",stockPuller.stockPull("JNJ"));
+                break;
+            case 2:
+                stocksList.setInitPrice("CVS",stockPuller.stockPull("CVS"));
+                stocksList.setInitPrice("WBA",stockPuller.stockPull("WBA"));
+                stocksList.setInitPrice("WMT",stockPuller.stockPull("WMT"));
+                break;
+            case 3:
+                stocksList.setInitPrice("TEVA",stockPuller.stockPull("TEVA"));
+                stocksList.setInitPrice("SGMS",stockPuller.stockPull("SGMS"));
+                stocksList.setInitPrice("SVU",stockPuller.stockPull("SVU"));
+                break;
+        }
     }
 }

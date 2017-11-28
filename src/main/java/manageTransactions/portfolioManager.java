@@ -1,5 +1,7 @@
 package manageTransactions;
 
+import Stock.stockCalc;
+import Stock.stockStore;
 import Utilities.queryHandler;
 import Utilities.scannerInputs;
 import Utilities.transactionBridge;
@@ -28,12 +30,16 @@ public class portfolioManager extends transactionBridge {
         }
     }
 
-    public static Portfolio createPortfolio(Portfolio portObj, Bank bankObj){
+    public static Portfolio createPortfolio(Portfolio portObj, Bank bankObj, stockStore stockObj){
         System.out.println("\n\n\n\t\t========================\n" +
                 "\t       Create a Portfolio!        \n" +
                 "\t\t========================");
 
         changeAggression(portObj);
+        try{
+        stockCalc.setStocks(portObj,stockObj);
+        }catch(Exception e){ }
+
         addFunds(portObj,bankObj);
 
         return portObj;
