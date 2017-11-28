@@ -6,7 +6,7 @@ import Utilities.transactionBridge;
 
 public class portfolioManager extends transactionBridge {
 
-    public static void portfolioManagerMenu(){
+    public static void portfolioManagerMenu(Portfolio portObj){
         int input = 0;
         String title = "\n\n\n\t\t========================\n" +
                 "\t        Manage Portfolio        \n" +
@@ -19,9 +19,11 @@ public class portfolioManager extends transactionBridge {
         while (input != 4) {
             input = queryHandler.optionsQuery(title + question, 4);
             switch(input){
-                case 1:
-                case 2:
-                case 3:
+                case 1://Do something
+                case 2://Do something
+                case 3://Do something
+                    changeAggression(portObj);
+                    break;
             }
         }
     }
