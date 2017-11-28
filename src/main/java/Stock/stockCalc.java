@@ -9,14 +9,18 @@ public class stockCalc {
     public void investmentCalc(Portfolio portfolio, stockStore stockList) throws IOException {
         int aggression = portfolio.getAggression();
         double funds = portfolio.getFunds();
-        double fundsDistributed = funds / 3;
         Double changeOfStock1;
         Double changeOfStock2;
         Double changeOfStock3;
+        Double overallGrowth;
         if (aggression == 1){
             changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("BUD"),"BUD");
             changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("BAC"),"BAC");
             changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("JNJ"),"JNJ");
+
+            overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
+            System.out.println("Overall Growth: " + overallGrowth);
+            System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
 
             System.out.printf("Percentage growth of Busch: %.3f\n", changeOfStock1);
             System.out.printf("Percentage growth of Bank Of America: %.3f\n", changeOfStock2);
@@ -27,6 +31,10 @@ public class stockCalc {
             changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("WBA"),"WBA");
             changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("WMT"),"WMT");
 
+            overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
+            System.out.println("Overall Growth: " + overallGrowth);
+            System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
+
             System.out.printf("Percentage growth of CVS: %.3f\n", changeOfStock1);
             System.out.printf("Percentage growth of Walgreens: %.3f\n", changeOfStock2);
             System.out.printf("Percentage growth of Walmart: %.3f\n", changeOfStock3);
@@ -35,6 +43,10 @@ public class stockCalc {
             changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("TEVA"),"TEVA");
             changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("SGMS"),"SGMS");
             changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("SVU"),"SVU");
+
+            overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
+            System.out.println("Overall Growth: " + overallGrowth);
+            System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
 
             System.out.println("Percentage growth of TEVA: %.3f\n" + changeOfStock1);
             System.out.println("Percentage growth of Scientific Games: %.3f\n" + changeOfStock2);
