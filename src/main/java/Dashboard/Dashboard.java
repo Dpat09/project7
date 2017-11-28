@@ -1,5 +1,6 @@
 package Dashboard;
 
+import Stock.stockCalc;
 import Storage.bankStorage;
 import Storage.portfolioStorage;
 import Storage.userStorage;
@@ -15,10 +16,12 @@ public class Dashboard {
     private Date date = new Date();
     private static Portfolio currentPortfolio = null;
     private static Bank currentBank = null;
+    private stockCalc calc = null;
 
     public Dashboard(User currentUser){
         currentPortfolio = new Portfolio();
         currentBank = new Bank();
+        calc = new stockCalc();
     }
 
     public void preDashSetup(User currentUser) {
@@ -43,6 +46,12 @@ public class Dashboard {
             System.out.print("Your present account value is $");
             System.out.printf("%.2f\n", currentPortfolio.getFunds());
 
+            try{
+                calc.investmentCalc(currentPortfolio);
+            }catch(Exception e){
+                System.out.println("hello");
+            }
+
             String questionPart1 = "What would you like to do today?\n"
                     + "\n1.) Manage User Account"
                     + "\n2.) Manage Portfolio" +
@@ -59,7 +68,7 @@ public class Dashboard {
                     break;
 
                 case 2:
-                    portfolioManager.portfolioManagerMenu();
+                    portfolioManager.portfolioManagerMenu(currentPortfolio);
                     break;
 
                 case 3:
