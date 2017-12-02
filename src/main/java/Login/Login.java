@@ -3,6 +3,8 @@ package Login;
 import Storage.userStorage;
 import User.User;
 import static Utilities.queryHandler.*;
+import java.io.*;
+import  java.lang.*;
 
 public class Login {
     public static boolean launchLoginMenu(User currentUser) {
@@ -82,4 +84,25 @@ public class Login {
         }
         return false;
     }
+    //if the email exist it will return false;
+    //if the email doesn't  exist it will return true;
+    public  Boolean EmailValidation(String email){
+
+        File theDir = new File("Storage//" +email);
+        if (theDir.exists()) {
+
+
+
+            return false;
+        }
+
+
+
+        return true;
+    }
+
+
+
+
+
 }
