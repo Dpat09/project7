@@ -84,21 +84,29 @@ public class Login {
         }
         return false;
     }
-    //if the email exist it will return false;
-    //if the email doesn't  exist it will return true;
-    public  Boolean EmailValidation(String email){
+    //if the email exist it will return true;
+    //if the email doesn't  exist it will return false;
+    public static boolean EmailValidation(String Email){
 
-        File theDir = new File("Storage//" +email);
-        if (theDir.exists()) {
+        if(VarifidationHelper(Email,'.') && VarifidationHelper(Email,'@') == true){
 
-
-
-            return false;
+            return true;
         }
 
+        return false;
+    }
 
+    public static boolean VarifidationHelper(String Email,char Criteria){
+        char[] characterArray = Email.toCharArray();
+        for (char letter: characterArray){
 
-        return true;
+            if(letter == Criteria){
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
