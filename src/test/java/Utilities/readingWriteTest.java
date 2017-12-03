@@ -16,14 +16,31 @@ public class readingWriteTest extends readingWrite {
     }
 
     @Test
-    public void writeFileUser() throws Exception {
+    public void AwriteFileUser() throws Exception {
         boolean isWorking = writeFile(test,null,null,null,"user");
         assertEquals(true,isWorking);
     }
 
     @Test
-    public void readFileUser() throws Exception {
-
+    public void AreadFileUser() throws Exception {
+        User example = new User();
+        example.setEmail("123@g.com");
+        boolean isWorking = readFile(example,null,null,null,"user");
+        assertEquals("test",example.getName());
     }
+
+//    @Test
+//    public void BwriteFileUser() throws Exception {
+//        boolean isWorking = writeFile(test,null,null,null,"user");
+//        assertEquals(true,isWorking);
+//    }
+//
+//    @Test
+//    public void BreadFileUser() throws Exception {
+//        User example = new User();
+//        example.setEmail("1234@g.com");
+//        boolean isWorking = readFile(example,null,null,null,"user");
+//        assertEquals(false,isWorking);
+//    }
 
 }
