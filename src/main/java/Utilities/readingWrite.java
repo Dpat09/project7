@@ -77,7 +77,7 @@ public class readingWrite {
                 bw.newLine();
                 bw.write(String.valueOf(bank.isOverDraw()));
                 bw.newLine();
-                bw.write(String.valueOf(bank.getCorporate()));
+                bw.write(String.valueOf(bank.isCorporate()));
             }else if(masterInstruction.equalsIgnoreCase("stock")){
                 System.out.println("Stock information saved here.");
 //                Iterator i = stocksList.getMap().entrySet().iterator();
