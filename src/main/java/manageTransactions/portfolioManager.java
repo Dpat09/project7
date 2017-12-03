@@ -8,7 +8,7 @@ import Utilities.transactionBridge;
 
 public class portfolioManager extends transactionBridge {
 
-    public static void portfolioManagerMenu(Portfolio portObj){
+    public static void portfolioManagerMenu(Portfolio portObj, stockStore stockObj){
         int input = 0;
         String title = "\n\n\n\t\t========================\n" +
                 "\t        Manage Portfolio        \n" +
@@ -22,7 +22,7 @@ public class portfolioManager extends transactionBridge {
             input = queryHandler.optionsQuery(title + question, 4);
             switch(input){
                 case 1://Do something
-                    
+                    portfolioBreakdown(portObj, stockObj);
                     break;
                 case 2://Do something
 
@@ -58,4 +58,28 @@ public class portfolioManager extends transactionBridge {
         transactionBridge.bankToPortfolio(bankObj,portObj,amount);
     }
 
+    public static void portfolioBreakdown(Portfolio portObj, stockStore stockObj){
+        System.out.println("\n\n\n\t\t========================\n" +
+                "\t       Portfolio Breakdown!        \n" +
+                "\t\t========================\n\n");
+        switch (portObj.getAggression()) {
+            case 1:
+                System.out.printf("Percentage growth of Busch: %.3f\n", stockObj.getChangeOfStock(0));
+                System.out.printf("Percentage growth of Bank Of America: %.3f\n", stockObj.getChangeOfStock(1));
+                System.out.printf("Percentage growth of Johnson and Johnson: %.3f\n", stockObj.getChangeOfStock(2));
+                break;
+            case 2:
+                System.out.printf("Percentage growth of CVS: %.3f\n", stockObj.getChangeOfStock(0));
+                System.out.printf("Percentage growth of Walgreens: %.3f\n", stockObj.getChangeOfStock(1));
+                System.out.printf("Percentage growth of Walmart: %.3f\n", stockObj.getChangeOfStock(2));
+                break;
+            case 3:
+                System.out.println("Percentage growth of TEVA: %.3f\n" + stockObj.getChangeOfStock(0));
+                System.out.println("Percentage growth of Scientific Games: %.3f\n" + stockObj.getChangeOfStock(1));
+                System.out.println("Percentage growth of Super Value Games: %.3f\n" + stockObj.getChangeOfStock(2));
+                break;
+        }
+        String temp = queryHandler.inputInfo("1.) Go back: ");
+
+    }
 }
