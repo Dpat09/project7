@@ -87,30 +87,19 @@ public class Login {
     //if the email exist it will return true;
     //if the email doesn't  exist it will return false;
     public static boolean EmailValidation(String Email){
-
         if(VarifidationHelper(Email,'.') && VarifidationHelper(Email,'@') == true){
-
             return true;
         }
-
         return false;
     }
 
     public static boolean VarifidationHelper(String Email,char Criteria){
         char[] characterArray = Email.toCharArray();
         for (char letter: characterArray){
-
             if(letter == Criteria){
-
                 return true;
             }
         }
-
         return false;
     }
-
-
-
-
-
 }
