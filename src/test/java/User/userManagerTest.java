@@ -27,7 +27,13 @@ public class userManagerTest {
 
     @Test
     public void changeUserPass() throws Exception {
+        String input = "123" + System.getProperty("line.separator")
+                + "321" + System.getProperty("line.separator");
 
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        userManager.changeUserPass(userObj);
+        assert (true);
     }
 
 }
