@@ -3,7 +3,7 @@ package manageTransactions;
 public class Bank implements moneyMovement{
     private double balance;
     private boolean overDraw;
-    private boolean isCorporate = false;
+    private boolean isCorporate;
 
     public Bank(){
         updateBalance(15);
@@ -41,10 +41,10 @@ public class Bank implements moneyMovement{
         updateBalance(getBalance()+amount);
     }
 
-    public boolean getCorporate() { return this.isCorporate; }
+    public boolean isCorporate() { return this.isCorporate; }
 
     public boolean withDraw(double amount) {
-        if (getBalance() - amount > 0) {
+        if (getBalance() - amount >= 0) {
             updateBalance(getBalance() - amount);
             return true;
         }
@@ -61,6 +61,7 @@ public class Bank implements moneyMovement{
             isCorporate = true; }
         else {
             System.out.println("Account updated: Personal User");
+            isCorporate = false;
         }
     }
 }
