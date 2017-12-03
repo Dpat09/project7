@@ -6,13 +6,14 @@ import java.io.IOException;
 import Stock.stockStore;
 
 public class stockCalc {
-    public void investmentCalc(Portfolio portfolio, stockStore stockList) throws IOException {
+    public static void investmentCalc(Portfolio portfolio, stockStore stockList){
         int aggression = portfolio.getAggression();
         double funds = portfolio.getFunds();
         Double changeOfStock1;
         Double changeOfStock2;
         Double changeOfStock3;
         Double overallGrowth;
+
         if (aggression == 1){
             changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("BUD"),"BUD");
             changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("BAC"),"BAC");
@@ -39,6 +40,12 @@ public class stockCalc {
             changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("WMT"),"WMT");
 
             overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
+
+            portfolio.setOverallGrowth(overallGrowth);
+            stockList.setChangeOfStock(changeOfStock1);
+            stockList.setChangeOfStock(changeOfStock2);
+            stockList.setChangeOfStock(changeOfStock3);
+
             System.out.println("Overall Growth: " + overallGrowth);
             System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
 
@@ -52,16 +59,22 @@ public class stockCalc {
             changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("SVU"),"SVU");
 
             overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
+
+            portfolio.setOverallGrowth(overallGrowth);
+            stockList.setChangeOfStock(changeOfStock1);
+            stockList.setChangeOfStock(changeOfStock2);
+            stockList.setChangeOfStock(changeOfStock3);
+
             System.out.println("Overall Growth: " + overallGrowth);
             System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
 
-            System.out.println("Percentage growth of TEVA: %.3f\n" + changeOfStock1);
-            System.out.println("Percentage growth of Scientific Games: %.3f\n" + changeOfStock2);
-            System.out.println("Percentage growth of Super Value Games: %.3f\n" + changeOfStock3);
+            System.out.printf("Percentage growth of TEVA: %.3f\n", changeOfStock1);
+            System.out.printf("Percentage growth of Scientific Games: %.3f\n", changeOfStock2);
+            System.out.printf("Percentage growth of Super Value Games: %.3f\n", changeOfStock3);
         }
     }
 
-    private double changeInPercent(stockStore stockList, double newStock, String oldStock){
+    private static double changeInPercent(stockStore stockList, double newStock, String oldStock){
         return (newStock - stockList.getInitPrice(oldStock)) / stockList.getInitPrice(oldStock);
     }
 

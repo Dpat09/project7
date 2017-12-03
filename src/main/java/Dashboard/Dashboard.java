@@ -1,7 +1,6 @@
 package Dashboard;
 
-import Stock.stockCalc;
-import Stock.stockStore;
+import Stock.*;
 import Storage.bankStorage;
 import Storage.portfolioStorage;
 import Storage.stockStorage;
@@ -12,19 +11,16 @@ import manageTransactions.Bank;
 import manageTransactions.Portfolio;
 import manageTransactions.portfolioManager;
 import java.util.Date;
-import java.util.Scanner;
 
 public class Dashboard {
     private Date date = new Date();
     private static Portfolio currentPortfolio = null;
     private static Bank currentBank = null;
-    private stockCalc calc = null;
     private static stockStore stocksList = null;
 
     public Dashboard(User currentUser){
         currentPortfolio = new Portfolio();
         currentBank = new Bank();
-        calc = new stockCalc();
         stocksList = new stockStore();
     }
 
@@ -63,7 +59,7 @@ public class Dashboard {
 
             //testing
             try{
-                calc.investmentCalc(currentPortfolio,stocksList);
+                stockCalc.investmentCalc(currentPortfolio,stocksList);
             }catch(Exception e){
                 System.out.println("hello");
             }
@@ -83,7 +79,7 @@ public class Dashboard {
                     break;
 
                 case 2:
-                    portfolioManager.portfolioManagerMenu(currentPortfolio);
+                    portfolioManager.portfolioManagerMenu(currentPortfolio, stocksList);
                     break;
 
                 case 3:
