@@ -17,6 +17,12 @@ public class BankTest {
     }
 
     @Test
+    public void objCreate() throws Exception{
+        Bank obj = new Bank();
+        assert(true);
+    }
+
+    @Test
     public void getBalance() throws Exception {
         assertEquals(100, testBank.getBalance(), 0);
     }
@@ -59,6 +65,25 @@ public class BankTest {
     public void withDraw() throws Exception {
         testBank.withDraw(15);
         assertEquals(85,testBank.getBalance(),0);
+    }
+
+    @Test
+    public void withDrawFalse() throws Exception {
+        assertEquals(false,testBank.withDraw(1000));
+    }
+
+    @Test
+    public void checkCorporate() throws Exception{
+        testBank.deposit(100000);
+        testBank.checkCorporate();
+        assertEquals(true,testBank.isCorporate());
+    }
+
+    @Test
+    public void checkCorporateFalse(){
+        testBank.withDraw(testBank.getBalance());
+        testBank.checkCorporate();
+        assertEquals(false,testBank.isCorporate());
     }
 
 }
