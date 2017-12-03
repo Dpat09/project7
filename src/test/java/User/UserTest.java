@@ -38,22 +38,33 @@ public class UserTest {
 
     @Test
     public void setPassword() throws Exception {
+        userObj.setPassword("321");
+        assert(true);
+        assertEquals("321",userObj.getPassword());
     }
 
     @Test
     public void getEmail() throws Exception {
+        assertEquals("123@g.com",userObj.getEmail());
     }
 
     @Test
     public void setEmail() throws Exception {
+        userObj.setEmail("321@g.com");
+        assert(true);
+        assertEquals("321@g.com",userObj.getEmail());
     }
 
     @Test
     public void isCorporate() throws Exception {
+        assertEquals(false,userObj.isCorporate());
     }
 
     @Test
     public void setCorporate() throws Exception {
+        userObj.setCorporate(true);
+        assert(true);
+        assertEquals(true,userObj.isCorporate());
     }
 
 }
