@@ -6,6 +6,8 @@ import Storage.portfolioStorage;
 import Storage.stockStorage;
 import Storage.userStorage;
 import User.*;
+
+import static Stock.stockCalc.investmentCalc;
 import static Utilities.queryHandler.*;
 import manageTransactions.Bank;
 import manageTransactions.Portfolio;
@@ -59,7 +61,7 @@ public class Dashboard {
 
             //testing
             try{
-                stockCalc.investmentCalc(currentPortfolio,stocksList);
+                investmentCalc(currentPortfolio,stocksList);
             }catch(Exception e){
                 System.out.println("hello");
             }
