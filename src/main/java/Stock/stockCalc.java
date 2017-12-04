@@ -1,76 +1,26 @@
 package Stock;
 
 import manageTransactions.Portfolio;
-import yahoofinance.*;
-import java.io.IOException;
-import Stock.stockStore;
 
 public class stockCalc {
     public static void investmentCalc(Portfolio portfolio, stockStore stockList){
-        int aggression = portfolio.getAggression();
-        double funds = portfolio.getFunds();
-        Double changeOfStock1;
-        Double changeOfStock2;
-        Double changeOfStock3;
-        Double overallGrowth;
+        String[] stockNames = null;
 
-        if (aggression == 1){
-            changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("BUD"),"BUD");
-            changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("BAC"),"BAC");
-            changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("JNJ"),"JNJ");
+        switch(portfolio.getAggression()){
+            case 1:
+                stockNames = new String[]{"BUD", "BAC", "JNJ"};
+                changeBuilder(stockNames,stockList,portfolio);
+                break;
 
-            overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
+            case 2:
+                stockNames = new String[]{"CVS", "WBA", "WMT"};
+                changeBuilder(stockNames,stockList,portfolio);
+                break;
 
-            portfolio.setOverallGrowth(overallGrowth);
-            stockList.setChangeOfStock(changeOfStock1);
-            stockList.setChangeOfStock(changeOfStock2);
-            stockList.setChangeOfStock(changeOfStock3);
-
-            System.out.println("Overall Growth: " + overallGrowth);
-            System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
-
-            System.out.printf("Percentage growth of Busch: %.3f\n", changeOfStock1);
-            System.out.printf("Percentage growth of Bank Of America: %.3f\n", changeOfStock2);
-            System.out.printf("Percentage growth of Johnson and Johnson: %.3f\n", changeOfStock3);
-
-        }
-        else if (aggression == 2){
-            changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("CVS"),"CVS");
-            changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("WBA"),"WBA");
-            changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("WMT"),"WMT");
-
-            overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
-
-            portfolio.setOverallGrowth(overallGrowth);
-            stockList.setChangeOfStock(changeOfStock1);
-            stockList.setChangeOfStock(changeOfStock2);
-            stockList.setChangeOfStock(changeOfStock3);
-
-            System.out.println("Overall Growth: " + overallGrowth);
-            System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
-
-            System.out.printf("Percentage growth of CVS: %.3f\n", changeOfStock1);
-            System.out.printf("Percentage growth of Walgreens: %.3f\n", changeOfStock2);
-            System.out.printf("Percentage growth of Walmart: %.3f\n", changeOfStock3);
-        }
-        else if (aggression == 3){
-            changeOfStock1 = changeInPercent(stockList,stockPuller.stockPull("TEVA"),"TEVA");
-            changeOfStock2 = changeInPercent(stockList,stockPuller.stockPull("SGMS"),"SGMS");
-            changeOfStock3 = changeInPercent(stockList,stockPuller.stockPull("SVU"),"SVU");
-
-            overallGrowth = (changeOfStock1 + changeOfStock2 + changeOfStock3) / 3;
-
-            portfolio.setOverallGrowth(overallGrowth);
-            stockList.setChangeOfStock(changeOfStock1);
-            stockList.setChangeOfStock(changeOfStock2);
-            stockList.setChangeOfStock(changeOfStock3);
-
-            System.out.println("Overall Growth: " + overallGrowth);
-            System.out.println("Funds: " + ((overallGrowth + 1) * funds) );
-
-            System.out.printf("Percentage growth of TEVA: %.3f\n", changeOfStock1);
-            System.out.printf("Percentage growth of Scientific Games: %.3f\n", changeOfStock2);
-            System.out.printf("Percentage growth of Super Value Games: %.3f\n", changeOfStock3);
+            case 3:
+                stockNames = new String[]{"TEVA", "SGMS", "SVU"};
+                changeBuilder(stockNames,stockList,portfolio);
+               break;
         }
     }
 
@@ -100,5 +50,17 @@ public class stockCalc {
         }catch(Exception e){
             System.out.println("Something broke at setStocks under Stock.stockCalc");
         }
+    }
+
+    private static void changeBuilder(String[] stockNames, stockStore stockList, Portfolio portfolio){
+        double temp;
+        double sum = 0;
+        for (String i :stockNames){
+            temp = changeInPercent(stockList,stockPuller.stockPull(i),i);
+            stockList.setChangeOfStock(temp);
+            sum+=temp;
+        }
+        portfolio.setOverallGrowth(sum/3);
+        portfolio.setFunds((portfolio.getOverallGrowth() + 1) * portfolio.getFunds());
     }
 }
