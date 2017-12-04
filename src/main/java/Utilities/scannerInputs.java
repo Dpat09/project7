@@ -4,18 +4,6 @@ import java.util.Scanner;
 
 public class scannerInputs {
 
-    public static Comparable scanInput(){
-        try{
-            Scanner scanner = new Scanner(System.in);
-            String store = scanner.next();
-            //scanner.close();
-            return store;
-        }catch (Exception e){
-            System.out.println("scanInput Error! \nPlease check Utilities >> scannerInputs >> scanInput");
-        }
-        return "";
-    }
-
     public static String scanString(){
         try{
             Scanner scanner = new Scanner(System.in);

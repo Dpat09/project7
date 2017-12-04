@@ -162,7 +162,7 @@ public class readingWrite {
                   bank.setOverDraw(Boolean.parseBoolean(Br.readLine()));
             }
             else if (masterInstruction.equalsIgnoreCase("stock")){
-                System.out.println("READING Stocks");
+                //System.out.println("READING Stocks");
                 stocksList.setInitPrice(Br.readLine(),Double.parseDouble(Br.readLine()));
                 stocksList.setInitPrice(Br.readLine(),Double.parseDouble(Br.readLine()));
                 stocksList.setInitPrice(Br.readLine(),Double.parseDouble(Br.readLine()));
