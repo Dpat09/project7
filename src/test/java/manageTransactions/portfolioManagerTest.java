@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
 
 public class portfolioManagerTest {
 
-    Portfolio portObj = new Portfolio(1,100,.5,false,110);
-    Bank bankObj = new Bank(100,false);
-    stockStore stockObj = new stockStore();
+    private Portfolio portObj = new Portfolio(1,100,.5,false,110);
+    private Bank bankObj = new Bank(100,false);
+    private stockStore stockObj = new stockStore();
 
     private void setupTest(int aggression){
         portObj.setAggression(aggression);

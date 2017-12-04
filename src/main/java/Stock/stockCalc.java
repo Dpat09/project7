@@ -24,7 +24,7 @@ public class stockCalc {
         }
     }
 
-    private static double changeInPercent(stockStore stockList, double newStock, String oldStock){
+    protected static double changeInPercent(stockStore stockList, double newStock, String oldStock){
         return (newStock - stockList.getInitPrice(oldStock)) / stockList.getInitPrice(oldStock);
     }
 
@@ -52,7 +52,7 @@ public class stockCalc {
         }
     }
 
-    private static void changeBuilder(String[] stockNames, stockStore stockList, Portfolio portfolio){
+    protected static void changeBuilder(String[] stockNames, stockStore stockList, Portfolio portfolio){
         double temp;
         double sum = 0;
         for (String i :stockNames){
