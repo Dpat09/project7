@@ -56,13 +56,33 @@ public class LoginTest extends Login{
     }
 
     @Test
-    public void emailValidationFalse() throws Exception {
+    public void emailValidationFalse1() throws Exception {
         String email = "testg.com";
         assertEquals(false,EmailValidation(email));
     }
 
     @Test
-    public void varifidationHelper() throws Exception {
+    public void emailValidationFalse2() throws Exception {
+        String email = "test@gcom";
+        assertEquals(false,EmailValidation(email));
     }
+
+    @Test
+    public void emailValidationFalse3() throws Exception {
+        String email = "testgcom";
+        assertEquals(false,EmailValidation(email));
+    }
+
+    @Test
+    public void varifidationHelperTrue() throws Exception {
+        String email = "test@gmail.com";
+        assertEquals(true,VarifidationHelper(email,'@'));
+    }
+
+    public void varifidationHelperFalse() throws Exception {
+        String email = "testgmail.com";
+        assertEquals(false,VarifidationHelper(email,'@'));
+    }
+
 
 }
