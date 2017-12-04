@@ -4,23 +4,19 @@ import manageTransactions.Portfolio;
 
 public class stockCalc {
     public static void investmentCalc(Portfolio portfolio, stockStore stockList){
-        String[] stockNames = null;
 
         switch(portfolio.getAggression()){
             case 1:
-                stockNames = new String[]{"BUD", "BAC", "JNJ"};
-                changeBuilder(stockNames,stockList,portfolio);
+                changeBuilder(new String[]{"BUD", "BAC", "JNJ"},stockList,portfolio);
                 break;
 
             case 2:
-                stockNames = new String[]{"CVS", "WBA", "WMT"};
-                changeBuilder(stockNames,stockList,portfolio);
+                changeBuilder(new String[]{"CVS", "WBA", "WMT"},stockList,portfolio);
                 break;
 
             case 3:
-                stockNames = new String[]{"TEVA", "SGMS", "SVU"};
-                changeBuilder(stockNames,stockList,portfolio);
-               break;
+                changeBuilder(new String[]{"TEVA", "SGMS", "SVU"},stockList,portfolio);
+                break;
         }
     }
 
@@ -32,19 +28,13 @@ public class stockCalc {
         try {
             switch (portfolio.getAggression()) {
                 case 1:
-                    stocksList.setInitPrice("BUD", stockPuller.stockPull("BUD"));
-                    stocksList.setInitPrice("BAC", stockPuller.stockPull("BAC"));
-                    stocksList.setInitPrice("JNJ", stockPuller.stockPull("JNJ"));
+                    setStocksHelper(new String[]{"BUD", "BAC", "JNJ"},stocksList);
                     break;
                 case 2:
-                    stocksList.setInitPrice("CVS", stockPuller.stockPull("CVS"));
-                    stocksList.setInitPrice("WBA", stockPuller.stockPull("WBA"));
-                    stocksList.setInitPrice("WMT", stockPuller.stockPull("WMT"));
+                    setStocksHelper(new String[]{"CVS", "WBA", "WMT"},stocksList);
                     break;
                 case 3:
-                    stocksList.setInitPrice("TEVA", stockPuller.stockPull("TEVA"));
-                    stocksList.setInitPrice("SGMS", stockPuller.stockPull("SGMS"));
-                    stocksList.setInitPrice("SVU", stockPuller.stockPull("SVU"));
+                    setStocksHelper(new String[]{"TEVA", "SGMS", "SVU"},stocksList);
                     break;
             }
         }catch(Exception e){
@@ -62,5 +52,10 @@ public class stockCalc {
         }
         portfolio.setOverallGrowth(sum/3);
         portfolio.setFunds((portfolio.getOverallGrowth() + 1) * portfolio.getFunds());
+    }
+
+    protected static void setStocksHelper(String[] stockNames, stockStore stocksList){
+        for (String name:stockNames)
+            stocksList.setInitPrice(name,stockPuller.stockPull(name));
     }
 }
