@@ -3,12 +3,13 @@ package Login;
 import User.User;
 import org.junit.Test;
 
+import java.beans.Expression;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import static org.junit.Assert.*;
 
-public class LoginTest {
+public class LoginTest extends Login{
 
     private User userObj = new User("test1","123","123test@g.com",false);
 
@@ -25,7 +26,7 @@ public class LoginTest {
 
     @Test
     public void launchLoginMenu() throws Exception {
-        String input = "4";
+        String input = "3";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Login.launchLoginMenu(userObj);
@@ -33,7 +34,31 @@ public class LoginTest {
     }
 
     @Test
-    public void emailValidation() throws Exception {
+    public void launchLoginMenuFalse() throws Exception {
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertEquals(2,Login.launchLoginMenu(userObj));
+    }
+
+    @Test
+    public void launchLoginFalse() throws Exception{
+        String input = "test";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertEquals(4,Login.launchLogin(userObj));
+    }
+
+    @Test
+    public void emailValidationTrue() throws Exception {
+        String email = "test@g.com";
+        assertEquals(true,EmailValidation(email));
+    }
+
+    @Test
+    public void emailValidationFalse() throws Exception {
+        String email = "testg.com";
+        assertEquals(false,EmailValidation(email));
     }
 
     @Test
