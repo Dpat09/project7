@@ -3,11 +3,11 @@ package Login;
 import Storage.userStorage;
 import User.User;
 import static Utilities.queryHandler.*;
-import java.io.*;
+
 import  java.lang.*;
 
 public class Login {
-    public static boolean launchLoginMenu(User currentUser) {
+    public static int launchLoginMenu(User currentUser) {
 
         String title = "\t\t========================\n" +
                 "\t\t   WELCOME TO ACORNS!  \n" +
@@ -22,23 +22,23 @@ public class Login {
                 boolean loginSuccess = launchLogin(currentUser) < 4;
                 if (!loginSuccess){
                     System.out.println("Login attempt failed 3 times.\nPlease try again.");
-                    return loginSuccess;
+                    return 2;
                 }
-                return loginSuccess;
+                return 1;
             case 2: //Launch SignUp
-                return launchSignup(currentUser);
+                return launchSignup(currentUser)?1:2;
             case 3: //Exit program
                 System.out.println(
                         "\t\t===============================\n" +
                                 "\t\t  Thank you for using Acorns!\n" +
                                 "\t\t===============================\n"
                 );
-                System.exit(0);
+                return 3;
         }
-        return false;
+        return 3;
     }
 
-    private static int launchLogin(User currentUser) {
+    protected static int launchLogin(User currentUser) {
 
         int trigger = 0;
 
@@ -60,7 +60,7 @@ public class Login {
         return trigger;
     }
 
-    private static boolean launchSignup(User currentUser) {
+    protected static boolean launchSignup(User currentUser) {
 
         while(true) {
             System.out.println("\t\t========================\n" +
@@ -86,20 +86,15 @@ public class Login {
     }
     //if the email exist it will return true;
     //if the email doesn't  exist it will return false;
-    public static boolean EmailValidation(String Email){
-        if(VarifidationHelper(Email,'.') && VarifidationHelper(Email,'@') == true){
-            return true;
-        }
-        return false;
+    protected static boolean EmailValidation(String Email){
+        return (VarifidationHelper(Email,'.') && VarifidationHelper(Email,'@'));
     }
 
-    public static boolean VarifidationHelper(String Email,char Criteria){
+    protected static boolean VarifidationHelper(String Email,char Criteria){
         char[] characterArray = Email.toCharArray();
-        for (char letter: characterArray){
-            if(letter == Criteria){
+        for (char letter: characterArray)
+            if(letter == Criteria)
                 return true;
-            }
-        }
         return false;
     }
 }
