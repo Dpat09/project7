@@ -12,10 +12,13 @@ public class Start {
             //Start Program with Splash
             splashScreen();
             User currentUser = new User();
-            if(Login.launchLoginMenu(currentUser)) {
+            int check = Login.launchLoginMenu(currentUser);
+            if (check==1) {
                 Dashboard dash = new Dashboard(currentUser);
                 dash.preDashSetup(currentUser);
             }
+            else if (check==3)
+                System.exit(0);
         }
     }
     public static void splashScreen() {
