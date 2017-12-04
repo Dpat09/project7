@@ -7,7 +7,7 @@ import java.io.InputStream;
 
 import static org.junit.Assert.*;
 
-public class userManagerTest {
+public class userManagerTest extends userManager{
 
     private User userObj = new User("test","123","123@g.com",false);
 

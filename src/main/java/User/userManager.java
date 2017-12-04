@@ -24,7 +24,7 @@ public class userManager {
         }
     }
 
-    private static void changeUserPass(User currentUser){
+    protected static void changeUserPass(User currentUser){
         while (true){
             System.out.println("\n\n\n\t\t========================\n" +
                     "\t        Change Password          \n" +
