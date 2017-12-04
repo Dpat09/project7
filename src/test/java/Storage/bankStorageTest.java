@@ -1,12 +1,10 @@
 package Storage;
 
-import Stock.stockStore;
 import User.User;
 import manageTransactions.Bank;
-import manageTransactions.Portfolio;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class bankStorageTest {
 

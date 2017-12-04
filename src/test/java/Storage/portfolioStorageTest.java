@@ -1,19 +1,15 @@
 package Storage;
 
-import Stock.stockStore;
 import User.User;
-import manageTransactions.Bank;
 import manageTransactions.Portfolio;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class portfolioStorageTest {
 
     private User userObj = new User("test1","123","123test@g.com",false);
     private Portfolio portObj = new Portfolio(1,100,.5,false,110);
-    private Bank bankObj = new Bank(100,false);
-    private stockStore stockObj = new stockStore();
 
     @Test
     public void canary() throws Exception{
@@ -21,11 +17,21 @@ public class portfolioStorageTest {
     }
 
     @Test
+    public void createObj() throws Exception{
+        portfolioStorage test = new portfolioStorage();
+        assert(true);
+    }
+
+    @Test
     public void writeFile() throws Exception {
+        portfolioStorage.writeFile(portObj,userObj);
+        assert(true);
     }
 
     @Test
     public void readFile() throws Exception {
+        portfolioStorage.readFile(portObj,userObj);
+        assertEquals(100,portObj.getPreInvested(),0);
     }
 
 }
