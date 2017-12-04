@@ -54,6 +54,27 @@ public class stockCalcTest extends stockCalc {
     }
 
     @Test
+    public void setStocks2() throws Exception {
+        setupTest(2,false);
+        assert(true);
+    }
+
+    @Test
+    public void setStocks3() throws Exception {
+        setupTest(3,false);
+        assert(true);
+    }
+
+    @Test
+    public void setStocksFalse() throws Exception {
+        setupTest(4,false);
+        assert(true);
+    }
+
+    @Test
     public void changeBuilder() throws Exception {
+        setupTest(1,false);
+        changeBuilder(new String[]{"BUD", "BAC", "JNJ"},stockObj,portObj);
+        assert(true);
     }
 }
