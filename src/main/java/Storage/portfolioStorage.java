@@ -13,7 +13,7 @@ public class portfolioStorage {
     public static boolean writeFile(Portfolio portfolio, User user){
         return readingWrite.writeFile(user,portfolio,null,null,"portfolio");
     }
-    public static boolean ReadFile(Portfolio portfolio,User user){
+    public static boolean readFile(Portfolio portfolio, User user){
         return readingWrite.readFile(user,portfolio,null,null,"portfolio");
     }
 }

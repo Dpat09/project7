@@ -27,7 +27,7 @@ public class Dashboard {
     public void preDashSetup(User currentUser) {
         stockStorage.readFile(stocksList,currentUser);
         bankStorage.readFile(currentBank,currentUser);
-        if (!portfolioStorage.ReadFile(currentPortfolio, currentUser))
+        if (!portfolioStorage.readFile(currentPortfolio, currentUser))
             portfolioManager.createPortfolio(currentPortfolio, currentBank, stocksList);
 
         investmentCalc(currentPortfolio,stocksList);
