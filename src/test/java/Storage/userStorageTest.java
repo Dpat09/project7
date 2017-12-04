@@ -2,6 +2,7 @@ package Storage;
 
 import User.User;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class userStorageTest {
 
@@ -20,10 +21,14 @@ public class userStorageTest {
 
     @Test
     public void writeFile() throws Exception {
+        userStorage.writeFile(userObj);
+        assert(true);
     }
 
     @Test
     public void readFile() throws Exception {
+        userStorage.readFile(userObj);
+        assertEquals("test1",userObj.getName());
     }
 
 }
