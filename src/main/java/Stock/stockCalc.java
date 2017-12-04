@@ -25,16 +25,20 @@ public class stockCalc {
     }
 
     public static void setStocks(Portfolio portfolio, stockStore stocksList){
-        switch (portfolio.getAggression()) {
-            case 1:
-                setStocksHelper(new String[]{"BUD", "BAC", "JNJ"},stocksList);
-                break;
-            case 2:
-                setStocksHelper(new String[]{"CVS", "WBA", "WMT"},stocksList);
-                break;
-            case 3:
-                setStocksHelper(new String[]{"TEVA", "SGMS", "SVU"},stocksList);
-                break;
+        try {
+            switch (portfolio.getAggression()) {
+                case 1:
+                    setStocksHelper(new String[]{"BUD", "BAC", "JNJ"},stocksList);
+                    break;
+                case 2:
+                    setStocksHelper(new String[]{"CVS", "WBA", "WMT"},stocksList);
+                    break;
+                case 3:
+                    setStocksHelper(new String[]{"TEVA", "SGMS", "SVU"},stocksList);
+                    break;
+            }
+        }catch(Exception e){
+            System.out.println("Something broke at setStocks under Stock.stockCalc");
         }
     }
 
