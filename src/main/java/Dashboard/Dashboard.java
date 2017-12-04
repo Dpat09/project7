@@ -12,10 +12,8 @@ import static Utilities.queryHandler.*;
 import manageTransactions.Bank;
 import manageTransactions.Portfolio;
 import manageTransactions.portfolioManager;
-import java.util.Date;
 
 public class Dashboard {
-    private Date date = new Date();
     private static Portfolio currentPortfolio = null;
     private static Bank currentBank = null;
     private static stockStore stocksList = null;
@@ -32,6 +30,7 @@ public class Dashboard {
         if (!portfolioStorage.ReadFile(currentPortfolio, currentUser))
             portfolioManager.createPortfolio(currentPortfolio, currentBank, stocksList);
 
+        investmentCalc(currentPortfolio,stocksList);
         launchDash(currentUser);
 
         userStorage.writeFile(currentUser);
@@ -47,24 +46,9 @@ public class Dashboard {
                     "\t\t   Hello \t" + currentUser.getName() + "!  \n" +
                     "\t\t========================\n");
 
-            System.out.print("Your present account value is $");
-            System.out.printf("%.2f\n", currentPortfolio.getFunds());
+            System.out.printf("Your present account value is $%.2f\n",currentPortfolio.getFunds());
+            System.out.printf("Original Investment Amount: $%.2f\n",currentPortfolio.getPreInvested());
 
-            //EXAMPLES OF USAGE OF stocksList
-//            stocksList.setInitPrice("INTL",35);
-//            stocksList.setInitPrice("HELLO", 100);
-//            stocksList.setInitPrice("GOOG", 1019);
-//
-//            System.out.println(stocksList.getInitPrice("INTL"));
-//            System.out.println(stocksList.getInitPrice("HELLO"));
-//            System.out.println(stocksList.getInitPrice("GOOG"));
-
-            //testing
-            try{
-                investmentCalc(currentPortfolio,stocksList);
-            }catch(Exception e){
-                System.out.println("hello");
-            }
 
             String question = "What would you like to do today?\n"
                     + "\n1.) Manage User Account"
@@ -87,6 +71,5 @@ public class Dashboard {
                 case 3:
             }
         }
-        //return true;
     }
 }

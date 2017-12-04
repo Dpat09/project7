@@ -57,10 +57,10 @@ public class Bank implements moneyMovement{
 
     public void checkCorporate(){
         if (getBalance() >= 80000){
-            System.out.println("Account updated: Corporate User");
+            //System.out.println("Account updated: Corporate User");
             isCorporate = true; }
         else {
-            System.out.println("Account updated: Personal User");
+            //System.out.println("Account updated: Personal User");
             isCorporate = false;
         }
     }
