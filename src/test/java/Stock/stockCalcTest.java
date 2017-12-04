@@ -18,7 +18,12 @@ public class stockCalcTest extends stockCalc {
     }
 
     @Test
-    public void creatObj(){
+    public void canary() throws Exception{
+        assert(true);
+    }
+
+    @Test
+    public void creatObj() throws Exception{
         stockCalc test = new stockCalc();
     }
 
